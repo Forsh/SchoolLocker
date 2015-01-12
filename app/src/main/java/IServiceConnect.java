@@ -31,6 +31,12 @@ public interface IServiceConnect {
    public void createCourse(Course newCourse);
     //-//-  как и в группе
 
+    public Course[] getCoursesInUniverstity(String UniversityName);
+    // Возвращает все группы в университете
+    // Group содержит в себе: имя, значок, дата создания, дата завершения обучения в группе
+    // описание.
 
+    public Course[] getCoursesBySearch(String GroupName);
+    // выводит группу при вводе в строку поиска (сложно)
 
 }
