@@ -9,7 +9,7 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="50dp">
 
         <LinearLayout
             android:orientation="vertical"
@@ -23,7 +23,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/text_view_mail"
                 android:id="@+id/textViewMail"
-                android:layout_marginTop="18dp"
+                android:layout_marginTop="8dp"
                 android:textColor="@color/text_color"
                 android:textSize="20sp" />
 
@@ -95,15 +95,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginRight="6dp">
+            android:layout_marginRight="16dp">
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editTextMail"
                 android:background="@drawable/edit_text_design"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="8dp"
                 android:inputType="textEmailAddress"
                 android:text="@string/edit_text_mail" />
 
@@ -113,7 +111,6 @@
                 android:id="@+id/editTextPassword"
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="8dp"
                 android:text="@string/edit_text_password"
                 android:inputType="textPassword" />
 
@@ -123,7 +120,6 @@
                 android:id="@+id/editTextConfirm"
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="8dp"
                 android:inputType="textPassword"
                 android:password="true"
                 android:text="@string/edit_text_confirm" />
@@ -134,7 +130,6 @@
                 android:id="@+id/editTextFirstName"
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="40dp"
-                android:layout_marginRight="8dp"
                 android:inputType="text"
                 android:text="@string/edit_text_first_name" />
 
@@ -144,7 +139,6 @@
                 android:id="@+id/editTextLastName"
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="8dp"
                 android:inputType="text"
                 android:text="@string/edit_text_last_name" />
 
@@ -154,7 +148,6 @@
                 android:id="@+id/editTextCountry"
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="8dp"
                 android:inputType="text"
                 android:text="@string/edit_text_country" />
 
@@ -164,7 +157,6 @@
                 android:id="@+id/editTextUniversity"
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="8dp"
                 android:inputType="text"
                 android:text="@string/edit_text_university" />
 
