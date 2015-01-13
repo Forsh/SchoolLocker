@@ -17,11 +17,7 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name="com.zfakgroup.israel.schoollocker.FragmentSignUp"
-            android:label="sdf" >
 
-            </activity>
 
     </application>
 
