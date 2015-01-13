@@ -100,50 +100,59 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText"
+                android:id="@+id/editTextMail"
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:inputType="edit_text_mail|textEmailAddress"
+                android:text="@string/edit_text_mail"
+                android:inputMethod="@string/edit_mail" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText2"
+                android:id="@+id/editTextPassword"
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:text="@string/edit_text_password"
+                android:inputType="textVisiblePassword|none" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText3"
+                android:id="@+id/editTextConfirm"
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:inputType="textVisiblePassword" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText4"
+                android:id="@+id/editTextFirstName"
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="40dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:inputType="text" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText5"
+                android:id="@+id/editTextLastName"
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:inputType="text" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText6"
+                android:id="@+id/editTextCountry"
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:inputType="text" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -151,7 +160,9 @@
                 android:id="@+id/editText7"
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="8dp" />
+                android:layout_marginRight="8dp"
+                android:inputType="text" />
+
         </LinearLayout>
 
     </LinearLayout>
