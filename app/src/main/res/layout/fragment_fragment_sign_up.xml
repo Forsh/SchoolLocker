@@ -105,8 +105,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="8dp"
                 android:inputType="edit_text_mail|textEmailAddress"
-                android:text="@string/edit_text_mail"
-                android:inputMethod="@string/edit_mail" />
+                android:text="@string/edit_text_mail" />
 
             <EditText
                 android:layout_width="match_parent"
