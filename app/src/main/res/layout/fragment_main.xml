@@ -66,9 +66,9 @@
             android:layout_height="wrap_content"
             android:text="@string/btn_log_in"
             android:id="@+id/buttonLogIn"
-            android:background="#ff00b8ae"
+            android:background="@drawable/button_design_blue"
             android:layout_marginTop="12dp"
-            android:textColor="#ffffffff"
+            android:textColor="@color/text_button_color"
             android:layout_marginBottom="4dp"
             android:textSize="22sp" />
 
@@ -82,8 +82,8 @@
         android:layout_gravity="bottom|right"
         android:layout_marginTop="40dp"
         android:layout_marginRight="20dp"
-        android:background="#ff00524c"
-        android:textColor="#ffffffff"
+        android:background="@drawable/button_design_green"
+        android:textColor="@color/text_button_color"
         android:textSize="22sp" />
 
 

@@ -29,7 +29,7 @@ public class MainActivity extends ActionBarActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, COUNTRIES);
         AutoCompleteTextView textView = (AutoCompleteTextView)
-                findViewById(R.id.country_picker);
+                findViewById(R.id.CountryPicker);
         textView.setAdapter(adapter);
 
 

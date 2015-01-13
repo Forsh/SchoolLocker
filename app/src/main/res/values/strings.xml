@@ -17,20 +17,20 @@
     <string name="text_view_last_name">Last name</string>
     <string name="text_view_сountry">Country</string>
     <string name="text_view_university">University</string>
-    <string name="edit_text_mail" />
-    <string name="edit_text_password" />
-    <string name="edit_text_university" />
-    <string name="edit_text_confirm" />
-    <string name="edit_text_first_name" />
-    <string name="edit_text_last_name" />
-    <string name="edit_text_country" />
-    <string name="country">Country</>
-    <string name="city">City</>
-    <string name="university">University</>
-    <string name="datebegin">Date begin</>
-    <string name="search">Search</>
-    <string name="add_courses_groups"> Add courses and groups </>
-
+    <string name="edit_text_mail"/>
+    <string name="edit_text_password"/>
+    <string name="edit_text_university"/>
+    <string name="edit_text_confirm"/>
+    <string name="edit_text_first_name"/>
+    <string name="edit_text_last_name"/>
+    <string name="edit_text_country"/>
+    <string name="country">Country</string>
+    <string name="city">City</string>
+    <string name="date_begin">Date begin</string>
+    <string name="search">Search</string>
+    <string name="add_courses_groups"> Add courses and groups</string>
     <string name="books_bar">books_bar</string>
+    <string name="edit_text_city" />
+    <string name="edit_text_date_begin" />
 
 </resources>

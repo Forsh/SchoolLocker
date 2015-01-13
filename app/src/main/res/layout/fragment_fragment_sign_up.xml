@@ -171,8 +171,8 @@
         android:id="@+id/buttonSignUp"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginBottom="60dp"
-        android:background="#ff00524c"
-        android:textColor="#ffffffff"
+        android:background="@drawable/button_design_green"
+        android:textColor="@color/text_button_color"
         android:textSize="20sp"
         android:layout_marginTop="10dp" />
 </FrameLayout>
