@@ -23,6 +23,12 @@
 
             </activity>
 
+        <activity
+            android:name="com.zfakgroup.israel.schoollocker.FragmentCreateCourse"
+            android:label="Creating a course" >
+
+        </activity>
+
     </application>
 
 </manifest>
