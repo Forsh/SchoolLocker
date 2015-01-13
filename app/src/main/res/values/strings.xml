@@ -24,5 +24,12 @@
     <string name="edit_text_first_name" />
     <string name="edit_text_last_name" />
     <string name="edit_text_country" />
+    <string name="country">Country</>
+    <string name="city">City</>
+    <string name="university">University</>
+    <string name="datebegin">Date begin</>
+    <string name="search">Search</>
+    <string name="add_courses_groups"> Add courses and groups </>
+
 
 </resources>

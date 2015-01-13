@@ -10,6 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Spinner;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -17,14 +20,23 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
-    }
+        setContentView(R.layout.search_fragment);
+//        if (savedInstanceState == null) {
+//            getSupportFragmentManager().beginTransaction()
+//                    .add(R.id.container, new PlaceholderFragment())
+//                    .commit();
+//        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
+        AutoCompleteTextView textView = (AutoCompleteTextView)
+                findViewById(R.id.country_picker);
+        textView.setAdapter(adapter);
 
+
+    }
+    private static final String[] COUNTRIES = new String[] {
+            "Belgium", "France", "Italy", "Germany", "Spain"
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
