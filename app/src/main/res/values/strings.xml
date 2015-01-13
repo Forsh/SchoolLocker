@@ -9,5 +9,13 @@
     <string name="edit_password">password</string>
     <string name="edit_mail">mail:</string>
     />    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_sign_up2">Sign up!</string>
+    <string name="text_view_mail">E-mail</string>
+    <string name="text_view_password">Password</string>
+    <string name="text_view_confirm">Confirm</string>
+    <string name="text_view_first_name">First name</string>
+    <string name="text_view_last_name">Last name</string>
+    <string name="text_view_сountry">Country</string>
+    <string name="text_view_university">University</string>
 
 </resources>
