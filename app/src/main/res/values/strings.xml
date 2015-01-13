@@ -24,5 +24,6 @@
     <string name="edit_text_first_name" />
     <string name="edit_text_last_name" />
     <string name="edit_text_country" />
+    <string name="books_bar">books_bar</string>
 
 </resources>

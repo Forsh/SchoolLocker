@@ -15,7 +15,8 @@
         android:id="@+id/imageView"
         android:cropToPadding="false"
         android:scaleType="fitStart"
-        android:layout_gravity="top" />
+        android:layout_gravity="top"
+        android:contentDescription="@string/books_bar" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,7 +70,7 @@
             android:layout_marginTop="12dp"
             android:textColor="#ffffffff"
             android:layout_marginBottom="4dp"
-            android:textSize="20sp" />
+            android:textSize="22sp" />
 
     </LinearLayout>
 
@@ -83,7 +84,7 @@
         android:layout_marginRight="20dp"
         android:background="#ff00524c"
         android:textColor="#ffffffff"
-        android:textSize="20sp" />
+        android:textSize="22sp" />
 
 
 </LinearLayout>
