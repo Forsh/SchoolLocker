@@ -19,5 +19,10 @@
     <string name="text_view_university">University</string>
     <string name="edit_text_mail" />
     <string name="edit_text_password" />
+    <string name="edit_text_university" />
+    <string name="edit_text_confirm" />
+    <string name="edit_text_first_name" />
+    <string name="edit_text_last_name" />
+    <string name="edit_text_country" />
 
 </resources>

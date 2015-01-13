@@ -104,7 +104,7 @@
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="8dp"
-                android:inputType="edit_text_mail|textEmailAddress"
+                android:inputType="textEmailAddress"
                 android:text="@string/edit_text_mail" />
 
             <EditText
@@ -115,7 +115,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="8dp"
                 android:text="@string/edit_text_password"
-                android:inputType="textVisiblePassword|none" />
+                android:inputType="textPassword" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -124,7 +124,9 @@
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="8dp"
-                android:inputType="textVisiblePassword" />
+                android:inputType="textPassword"
+                android:password="true"
+                android:text="@string/edit_text_confirm" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -133,7 +135,8 @@
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="40dp"
                 android:layout_marginRight="8dp"
-                android:inputType="text" />
+                android:inputType="text"
+                android:text="@string/edit_text_first_name" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -142,7 +145,8 @@
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="8dp"
-                android:inputType="text" />
+                android:inputType="text"
+                android:text="@string/edit_text_last_name" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -151,16 +155,18 @@
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="8dp"
-                android:inputType="text" />
+                android:inputType="text"
+                android:text="@string/edit_text_country" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/editText7"
+                android:id="@+id/editTextUniversity"
                 android:background="@drawable/edit_text_design"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="8dp"
-                android:inputType="text" />
+                android:inputType="text"
+                android:text="@string/edit_text_university" />
 
         </LinearLayout>
 
