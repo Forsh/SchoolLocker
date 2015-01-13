@@ -28,7 +28,7 @@
             <gradient android:startColor="#87ffe9e2"
                 android:centerColor="#ffffffff" android:endColor="#ffffffff"
                 android:angle="270" android:centerX="0.5" android:centerY="0.5" />
-            <stroke android:width="3dp" android:color="#ff00b8ae" />
+            <stroke android:width="3dp" android:color="#ff06ae88" />
             <corners android:radius="7dp" />
             <padding android:left="10dp" android:top="6dp" android:right="10dp"
                 android:bottom="6dp" />
