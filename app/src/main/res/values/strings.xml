@@ -31,5 +31,6 @@
     <string name="search">Search</>
     <string name="add_courses_groups"> Add courses and groups </>
 
+    <string name="books_bar">books_bar</string>
 
 </resources>
