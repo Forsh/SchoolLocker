@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name="com.zfakgroup.israel.schoollocker.FragmentSignUp"
+            android:label="sdf" >
+
+            </activity>
+
     </application>
 
 </manifest>
