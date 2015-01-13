@@ -20,14 +20,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Дим, оформи плз этот лэйаут. Это вроде как одна строка в результатах поиска."
+        android:text="Text"
         android:id="@+id/descrSearchResult" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
+        android:text="Дим, оформи плз этот лэйаут. Это вроде как одна строка в результатах поиска."
         android:id="@+id/textView4"
         android:layout_gravity="center_horizontal" />
 
