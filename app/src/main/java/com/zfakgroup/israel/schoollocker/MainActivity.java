@@ -12,7 +12,10 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ListView;
 import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -26,10 +29,12 @@ public class MainActivity extends ActionBarActivity {
 //                    .add(R.id.container, new PlaceholderFragment())
 //                    .commit();
 //        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
-        AutoCompleteTextView textView = (AutoCompleteTextView)
-                findViewById(R.id.CountryPicker);
+        ArrayList<SearchResult> srarray = new ArrayList<>();
+        srarray.add(new SearchResult("First name", "First description", this));
+        srarray.add(new SearchResult("Second name", "Second description", this));
+        MySearchResultAdapter adapter = new MySearchResultAdapter(this,
+                R.layout.search_item, srarray);
+        ListView textView = (ListView) findViewById(R.id.listViewSearchResult);
         textView.setAdapter(adapter);
 
 

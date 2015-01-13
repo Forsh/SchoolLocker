@@ -1,6 +1,6 @@
 /**
 * Created by mozartenok on 12.01.15.
-*/
+
 public interface IServiceConnect {
 
     public int login(String email, String password);
@@ -40,3 +40,4 @@ public interface IServiceConnect {
     // выводит группу при вводе в строку поиска (сложно)
 
 }
+*/
