@@ -78,7 +78,9 @@
         android:id="@+id/CountryPicker"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/edit_text_design"
-        android:text="@string/edit_text_country" />
+        android:text="@string/edit_text_country"
+        android:inputType="text"
+        android:gravity="center_horizontal" />
 
 
 
@@ -88,7 +90,9 @@
             android:id="@+id/CityPicker"
             android:background="@drawable/edit_text_design"
         android:layout_marginTop="10dp"
-        android:text="@string/edit_text_city" />
+        android:text="@string/edit_text_city"
+        android:inputType="text"
+        android:gravity="center_horizontal" />
 
         <AutoCompleteTextView
             android:layout_width="match_parent"
@@ -96,16 +100,20 @@
             android:id="@+id/UniversityPicker"
             android:background="@drawable/edit_text_design"
             android:layout_marginTop="10dp"
-            android:text="@string/edit_text_university" />
+            android:text="@string/edit_text_university"
+            android:inputType="text"
+            android:gravity="center_horizontal" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="date"
             android:id="@+id/DateBeginPicker"
             android:background="@drawable/edit_text_design"
             android:layout_marginTop="10dp"
-            android:text="@string/edit_text_date_begin" />
+            android:text="@string/edit_text_date_begin"
+            android:hint="@string/edit_date_hint"
+            android:gravity="center_horizontal" />
 
 
     </LinearLayout>
@@ -120,15 +128,14 @@
         android:id="@+id/btnSearch"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:background="@drawable/button_design_green" />
+        android:background="@drawable/button_design_blue" />
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:id="@+id/listViewSearchResult"
         android:choiceMode="multipleChoice"
-        android:layout_marginTop="50dp"
-        android:layout_weight="1" />
+        android:layout_marginTop="40dp" />
 
     <Button
         android:layout_width="260dp"
@@ -138,7 +145,7 @@
         android:textColor="@color/text_button_color"
         android:textSize="20sp"
         android:id="@+id/btnAddCoursesGroups"
-        android:layout_marginTop="30dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="20dp" />
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="30dp" />
 </LinearLayout>

@@ -2,10 +2,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <gradient android:startColor="#40FFE600"
-                android:centerColor="#60FFE600" android:endColor="#90FFE600"
+            <gradient android:startColor="#3200b8ae"
+                android:centerColor="#1600b8ae" android:endColor="#3e00b8ae"
                 android:angle="270" android:centerX="0.5" android:centerY="0.5" />
-            <stroke android:width="5dp" android:color="#50FF00DE" />
+            <stroke android:width="5dp" android:color="#ff044e3d" />
             <corners android:radius="7dp" />
             <padding android:left="10dp" android:top="6dp" android:right="10dp"
                 android:bottom="6dp" />
@@ -13,10 +13,10 @@
     </item>
     <item android:state_focused="true">
         <shape>
-            <gradient android:startColor="#40CB1759"
-                android:centerColor="#60CB1759" android:endColor="#90CB1759"
+            <gradient android:startColor="#87e1fff5"
+                android:centerColor="#ffffffff" android:endColor="#ffffffff"
                 android:angle="270" android:centerX="0.5" android:centerY="0.5" />
-            <stroke android:width="5dp" android:color="#fffefdff" />
+            <stroke android:width="5dp" android:color="#ff068a68" />
             <corners android:radius="7dp" />
             <padding android:left="10dp" android:top="6dp" android:right="10dp"
                 android:bottom="6dp" />
