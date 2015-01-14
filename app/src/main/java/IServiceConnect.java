@@ -1,6 +1,10 @@
+import com.zfakgroup.israel.schoollocker.Course;
+import com.zfakgroup.israel.schoollocker.Group;
+import com.zfakgroup.israel.schoollocker.User;
+
 /**
 * Created by mozartenok on 12.01.15.
-
+*/
 public interface IServiceConnect {
 
     public int login(String email, String password);
@@ -38,6 +42,4 @@ public interface IServiceConnect {
 
     public Course[] getCoursesBySearch(String GroupName);
     // выводит группу при вводе в строку поиска (сложно)
-
 }
-*/
