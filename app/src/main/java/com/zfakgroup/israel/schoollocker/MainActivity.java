@@ -1,7 +1,9 @@
 package com.zfakgroup.israel.schoollocker;
 
+import android.app.FragmentManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -11,47 +13,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends FragmentActivity
+
+{
     SQLiteDatabase db;
     String LOG_TAG = "Mylog";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_search);
-//        if (savedInstanceState == null) {
-//            getSupportFragmentManager().beginTransaction()
-//                    .add(R.id.container, new PlaceholderFragment())
-//                    .commit();
-//        }
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
-        AutoCompleteTextView textView = (AutoCompleteTextView)
-                findViewById(R.id.CountryPicker);
-        textView.setAdapter(adapter);
 
-        MockSQLDataHelper dbHelper = new MockSQLDataHelper(this,1);
-        db = dbHelper.getReadableDatabase();
+        // Главный экран - контейнер фрагментов во весь экран
+        setContentView(R.layout.fullscreen);
 
-        Cursor c = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
-
-        if (c.moveToFirst()) {
-            while ( !c.isAfterLast() ) {
-                Toast.makeText(this, "Table Name=> " + c.getString(0), Toast.LENGTH_LONG).show();
-                c.moveToNext();
-            }
-        }
-        db.close();
-        dbHelper.close();
-
-    }
-    private static final String[] COUNTRIES = new String[] {
-            "Belgium", "France", "Italy", "Germany", "Spain"
+        //Interface for interacting with Fragment objects inside of an Activity
+        //Добавляет и убирает фрагменты с Activity
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().add(R.id.fragment_container,new FragmentLogIn()).commit();
+        // Обращение к базе данных осуществляется через интерфейс.
+        IServiceConnect connect;
     };
 
     @Override
@@ -74,21 +56,5 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
-        }
     }
 }

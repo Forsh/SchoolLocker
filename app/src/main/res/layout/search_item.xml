@@ -1,34 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginTop="12dp"
+android:background="@drawable/edit_design"
+xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/imageSearchResult" />
+<ImageView
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:id="@+id/imageSearchResult"
+    android:src="@drawable/facebook"
+    android:layout_marginTop="4dp"
+    android:adjustViewBounds="false" />
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/imageSearchResult"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:layout_marginTop="6dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Professor Konechno Lopuh"
+        android:id="@+id/nameSearchResult"
+        android:textIsSelectable="false" />
+</LinearLayout>
+
+<CheckBox
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/checkBox1"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true"
+    android:checked="false"
+    android:layout_margin="2dp" />
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignTop="@+id/imageSearchResult"
+    android:layout_toLeftOf="@+id/checkBox1"
+    android:layout_toRightOf="@+id/imageSearchResult"
+    android:layout_toEndOf="@+id/imageSearchResult"
+    android:layout_marginLeft="10dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/nameSearchResult"
-        android:layout_gravity="center_horizontal" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Text"
+        android:text="Multiplication"
         android:id="@+id/descrSearchResult" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Дим, оформи плз этот лэйаут. Это вроде как одна строка в результатах поиска."
-        android:id="@+id/textView4"
-        android:layout_gravity="center_horizontal" />
-
+        android:text="Fall 2013"
+        android:id="@+id/textView3"
+        android:layout_marginTop="6dp" />
 </LinearLayout>
+
+</RelativeLayout>

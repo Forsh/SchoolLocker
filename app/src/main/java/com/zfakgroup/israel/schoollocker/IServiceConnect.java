@@ -1,3 +1,5 @@
+package com.zfakgroup.israel.schoollocker;
+
 import com.zfakgroup.israel.schoollocker.Course;
 import com.zfakgroup.israel.schoollocker.Group;
 import com.zfakgroup.israel.schoollocker.User;
