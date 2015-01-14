@@ -221,7 +221,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:text="Fall 2014"
+                        android:text="Fall 2012"
                         android:id="@+id/textView9"
                         android:layout_marginTop="6dp" />
                 </LinearLayout>
