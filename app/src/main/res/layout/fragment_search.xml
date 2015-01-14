@@ -128,7 +128,7 @@
         android:id="@+id/btnSearch"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:background="@drawable/button_design_green" />
+        android:background="@drawable/button_design_blue" />
 
     <ListView
         android:layout_width="wrap_content"
