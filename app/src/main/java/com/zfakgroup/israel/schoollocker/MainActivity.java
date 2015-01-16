@@ -98,8 +98,8 @@ public class MainActivity extends ActionBarActivity {
     public void onClick(View v){
         transaction = getFragmentManager().beginTransaction();
 
-        //transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-        transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right);
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right, R.animator.slide_in_left, R.animator.slide_in_right);//R.animator.card_flip_left_out, R.animator.slide_in_right, R.animator.card_flip_right_out);
 
         if(fragmentLogin.isVisible()){
             transaction.replace(R.id.fragment_container, fragmentSignUp);
