@@ -1,6 +1,8 @@
 package com.zfakgroup.israel.schoollocker;
 
+import android.app.Activity;
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
@@ -17,11 +19,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-public class MainActivity extends FragmentActivity
+public class MainActivity extends ActionBarActivity {
 
-{
+
     SQLiteDatabase db;
     String LOG_TAG = "Mylog";
+
+    private android.app.Fragment fragmentSignUp;
+    private android.app.Fragment fragmentLogin;
+    private FragmentTransaction transaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,20 @@ public class MainActivity extends FragmentActivity
        fragmentManager.beginTransaction().add(R.id.fragment_container,new FragmentLogIn()).commit();
         // Обращение к базе данных осуществляется через интерфейс.
         IServiceConnect connect;
+
+
+
+        fragmentLogin = new FragmentLogIn();
+        fragmentSignUp = new FragmentSignUp();
+        transaction = getFragmentManager().beginTransaction();
+
+        transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right);
+
+        transaction.replace(R.id.fragment_container, fragmentLogin);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
+
 
 
     };
@@ -64,5 +84,19 @@ public class MainActivity extends FragmentActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClick(View v){
+        transaction = getFragmentManager().beginTransaction();
+
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        //transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right);
+
+        if(fragmentLogin.isVisible()){
+            transaction.replace(R.id.fragment_container, fragmentSignUp);
+        }else{
+            transaction.replace(R.id.fragment_container, fragmentLogin);
+        }
+        transaction.commit();
     }
 }

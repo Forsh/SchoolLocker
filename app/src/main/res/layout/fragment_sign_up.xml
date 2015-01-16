@@ -144,7 +144,7 @@
                 android:inputType="text"
                 android:text="@string/edit_text_last_name" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editTextCountry"
@@ -153,7 +153,7 @@
                 android:inputType="text"
                 android:text="@string/edit_text_country" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editTextUniversity"

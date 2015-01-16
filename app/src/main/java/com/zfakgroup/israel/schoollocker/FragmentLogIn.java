@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 /**
  * Created by mac on 14.01.15.
  */
-public class FragmentLogIn extends Fragment implements View.OnClickListener {
+public class FragmentLogIn extends Fragment {
     public View view;
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
@@ -28,15 +28,15 @@ public class FragmentLogIn extends Fragment implements View.OnClickListener {
         //((Button) view.findViewById(R.id.buttonSignUp)).setOnClickListener(this);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.buttonLogIn:
-                // --- Осуществить LOG IN
-                break;
-            case R.id.buttonSignUp:
-                // Перейти к регистрации
-                break;
-        }
-    }
+//    @Override
+//    public void onClick(View v) {
+//        switch (v.getId()) {
+//            case R.id.buttonLogIn:
+//                // --- Осуществить LOG IN
+//                break;
+//            case R.id.buttonSignUp:
+//                // Перейти к регистрации
+//                break;
+//        }
+//    }
 }
