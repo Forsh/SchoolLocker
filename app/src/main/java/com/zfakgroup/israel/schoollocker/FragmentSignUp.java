@@ -106,4 +106,6 @@ public class FragmentSignUp extends Fragment {
         public void onFragmentInteraction(Uri uri);
     }
 
+
+
 }

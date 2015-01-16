@@ -47,16 +47,15 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-        fragmentLogin = new FragmentLogIn();
-        fragmentSignUp = new FragmentSignUp();
-        transaction = getFragmentManager().beginTransaction();
+            fragmentLogin = new FragmentLogIn();
+            fragmentSignUp = new FragmentSignUp();
+            transaction = getFragmentManager().beginTransaction();
+            //анимация при запуске приложения
+            transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right);
 
-        transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right);
-
-        transaction.replace(R.id.fragment_container, fragmentLogin);
-        transaction.addToBackStack(null);
-
-        transaction.commit();
+            transaction.replace(R.id.fragment_container, fragmentLogin);
+            transaction.addToBackStack(null);
+            transaction.commit();
 
 
 
@@ -98,8 +97,8 @@ public class MainActivity extends ActionBarActivity {
     public void onClick(View v){
         transaction = getFragmentManager().beginTransaction();
 
-        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-            transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right, R.animator.slide_in_left, R.animator.slide_in_right);//R.animator.card_flip_left_out, R.animator.slide_in_right, R.animator.card_flip_right_out);
+        //  transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN); //вид анимации - проявление
+            transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right, R.animator.slide_in_left, R.animator.slide_in_right);//вид анимации - наплыв сверху
 
         if(fragmentLogin.isVisible()){
             transaction.replace(R.id.fragment_container, fragmentSignUp);
