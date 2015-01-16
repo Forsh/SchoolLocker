@@ -1,11 +1,8 @@
 package com.zfakgroup.israel.schoollocker;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-
-import com.zfakgroup.israel.schoollocker.R;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,22 +18,26 @@ import java.util.Date;
  *
  */
 public class SearchResult {
-    public Bitmap image;
-    public String name;
-    public String description;
-    private Date begin, end;
+    private Bitmap image;
+    private String name;
+    private String description;
+    private Date begin;
+    private Date end;
 
+    public SearchResult(){
+
+    }
 
     public SearchResult(String name, String description, String imageURL, Context context){
-        this.name=name;
-        this.description = description;
-        this.image= getBitmapFromURL(imageURL);
+        this.setName(name);
+        this.setDescription(description);
+        this.setImage(getBitmapFromURL(imageURL));
     }
 
     public SearchResult(String name, String description, Context context){
-        this.name=name;
-        this.description = description;
-        this.image= BitmapFactory.decodeResource(context.getResources(), R.drawable.graduate);
+        this.setName(name);
+        this.setDescription(description);
+        this.setImage(BitmapFactory.decodeResource(context.getResources(), R.drawable.graduate));
     }
 
     // Этот метод наверно должен быть не здесь))
@@ -53,5 +54,45 @@ public class SearchResult {
             // Log exception
             return null;
         }
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getBegin() {
+        return begin;
+    }
+
+    public void setBegin(Date begin) {
+        this.begin = begin;
+    }
+
+    public Date getEnd() {
+        return end;
+    }
+
+    public void setEnd(Date end) {
+        this.end = end;
     }
 }

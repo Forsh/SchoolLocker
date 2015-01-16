@@ -1,9 +1,9 @@
 package com.zfakgroup.israel.schoollocker;
 
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Typeface;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
@@ -14,15 +14,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends FragmentActivity
-
 {
     SQLiteDatabase db;
     String LOG_TAG = "Mylog";
-
+    FragmentManager fragmentManager;
+    IServiceConnect connect;
+    android.app.Fragment current;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,19 +31,13 @@ public class MainActivity extends FragmentActivity
         // Главный экран - контейнер фрагментов во весь экран
         setContentView(R.layout.fullscreen);
 
-
-
         //Interface for interacting with Fragment objects inside of an Activity
         //Добавляет и убирает фрагменты с Activity
-       FragmentManager fragmentManager = getFragmentManager();
-       fragmentManager.beginTransaction().add(R.id.fragment_container,new FragmentLogIn()).commit();
+        fragmentManager = getFragmentManager();
+        current = new FragmentLogIn();
+        fragmentManager.beginTransaction().add(R.id.fragment_container, current).addToBackStack(FragmentLogIn.class.getName()).commit();
         // Обращение к базе данных осуществляется через интерфейс.
-        IServiceConnect connect;
-
-
     };
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -64,5 +59,13 @@ public class MainActivity extends FragmentActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    public void switchFragments(int fragment){
+        switch (fragment){
+            case 2:
+                fragmentManager.beginTransaction().replace(R.id.fragment_container, new FragmentSignUp())
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .addToBackStack(FragmentSignUp.class.getName()).commit();
+        }
     }
 }

@@ -8,8 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.zfakgroup.israel.schoollocker.R;
-
 import java.util.ArrayList;
 
 /**
@@ -26,9 +24,9 @@ public class MySearchResultAdapter extends ArrayAdapter<SearchResult> {
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.search_item, parent, false);
         }
-        ((TextView) convertView.findViewById(R.id.nameSearchResult)).setText(sr.name);
-        ((TextView) convertView.findViewById(R.id.descrSearchResult)).setText(sr.description);
-        ((ImageView) convertView.findViewById(R.id.imageSearchResult)).setImageBitmap(sr.image);
+        ((TextView) convertView.findViewById(R.id.nameSearchResult)).setText(sr.getName());
+        ((TextView) convertView.findViewById(R.id.descrSearchResult)).setText(sr.getDescription());
+        ((ImageView) convertView.findViewById(R.id.imageSearchResult)).setImageBitmap(sr.getImage());
         return convertView;
     }
 }
