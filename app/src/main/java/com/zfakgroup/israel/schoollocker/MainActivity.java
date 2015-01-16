@@ -68,4 +68,13 @@ public class MainActivity extends FragmentActivity
                         .addToBackStack(FragmentSignUp.class.getName()).commit();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0 ){
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
 }
