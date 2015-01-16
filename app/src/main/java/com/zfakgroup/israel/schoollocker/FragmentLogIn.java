@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 /**
  * Created by mac on 14.01.15.
  */
-public class FragmentLogIn extends Fragment implements View.OnClickListener {
+public class FragmentLogIn extends Fragment {
     public View view;
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
