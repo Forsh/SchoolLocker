@@ -1,6 +1,5 @@
 package com.zfakgroup.israel.schoollocker;
 
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -10,6 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.mac.myapplication.backend.myApi.MyApi;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -17,11 +18,9 @@ public class MainActivity extends ActionBarActivity {
     // Обращение к базе данных осуществляется через интерфейс.
     IServiceConnect connect;
 
-
     private android.app.Fragment fragmentSignUp;
     private android.app.Fragment fragmentLogin;
     private FragmentTransaction transaction;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

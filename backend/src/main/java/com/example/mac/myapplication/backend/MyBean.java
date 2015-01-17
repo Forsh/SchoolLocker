@@ -1,4 +1,4 @@
-package com.zfakgroup.israel.schoollocker.backend;
+package com.example.mac.myapplication.backend;
 
 /**
  * The object model for the data we are sending through endpoints
