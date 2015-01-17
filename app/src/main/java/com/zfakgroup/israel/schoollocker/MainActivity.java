@@ -30,12 +30,6 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.fullscreen);
 
 
-        //Interface for interacting with Fragment objects inside of an Activity
-        //Добавляет и убирает фрагменты с Activity
-       FragmentManager fragmentManager = getFragmentManager();
-       fragmentManager.beginTransaction().add(R.id.fragment_container,new FragmentLogIn()).commit();
-
-
 
 
             fragmentLogin = new FragmentLogIn();
