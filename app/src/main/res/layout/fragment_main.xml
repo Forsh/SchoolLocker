@@ -67,7 +67,8 @@
             android:layout_marginTop="12dp"
             android:textColor="@color/text_button_color"
             android:layout_marginBottom="4dp"
-            android:textSize="22sp" />
+            android:textSize="22sp"
+            android:onClick="onClick" />
 
     </LinearLayout>
 

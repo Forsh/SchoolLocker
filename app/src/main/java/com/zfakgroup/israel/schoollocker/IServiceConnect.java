@@ -1,9 +1,5 @@
 package com.zfakgroup.israel.schoollocker;
 
-import com.zfakgroup.israel.schoollocker.Course;
-import com.zfakgroup.israel.schoollocker.Group;
-import com.zfakgroup.israel.schoollocker.User;
-
 /**
 * Created by mozartenok on 12.01.15.
 */
@@ -29,7 +25,7 @@ public interface IServiceConnect {
     // описание.
 
     public Group[] getGroupsBySearch(String GroupName);
-    // выводит группу при вводе в строку поиска (сложно)
+    // выводит группу при вводе в строку поиска (сложно), возвращает все группы с похожими названиями и выводит их в выборе
 
     public void createGroup(Group newGroup);
     //создаем группу, данные закидываются в базу данных
@@ -44,4 +40,19 @@ public interface IServiceConnect {
 
     public Course[] getCoursesBySearch(String GroupName);
     // выводит группу при вводе в строку поиска (сложно)
+
+    public Course[] getCoursesOfMyGroup(String GroupName);
+    //выводит все курсы группы
+
+    public Course[] getMyCourses(String UserName);
+    // находит имя пользователя в базе данных и выводит все группы в которых он состоит
+
+    public User searchUser(String firstName, String lastName);
+    //находит пользователя, возвращает все его группы и данные
+
+    public Group searchGroup(String Group);
+    //находит группу
+
+    public Course searchCourse(String course);
+    //находит курс
 }

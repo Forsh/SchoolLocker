@@ -1,29 +1,22 @@
 package com.zfakgroup.israel.schoollocker;
 
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Typeface;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.EditText;
 
 
 public class MainActivity extends ActionBarActivity {
 
 
-    SQLiteDatabase db;
-    String LOG_TAG = "Mylog";
+    // Обращение к базе данных осуществляется через интерфейс.
+    IServiceConnect connect;
+
 
     private android.app.Fragment fragmentSignUp;
     private android.app.Fragment fragmentLogin;
@@ -37,13 +30,11 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.fullscreen);
 
 
-
         //Interface for interacting with Fragment objects inside of an Activity
         //Добавляет и убирает фрагменты с Activity
        FragmentManager fragmentManager = getFragmentManager();
        fragmentManager.beginTransaction().add(R.id.fragment_container,new FragmentLogIn()).commit();
-        // Обращение к базе данных осуществляется через интерфейс.
-        IServiceConnect connect;
+
 
 
 
@@ -59,7 +50,8 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-    };
+    }
+
 
 
 
@@ -95,17 +87,41 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onClick(View v){
-        transaction = getFragmentManager().beginTransaction();
 
-        //  transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN); //вид анимации - проявление
+        switch(v.getId()){
+            //if the signUp button was pressed
+           case R.id.buttonSignUp:
+            transaction = getFragmentManager().beginTransaction();
+
+            //  transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN); //вид анимации - проявление
             transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right, R.animator.slide_in_left, R.animator.slide_in_right);//вид анимации - наплыв сверху
 
-        if(fragmentLogin.isVisible()){
-            transaction.replace(R.id.fragment_container, fragmentSignUp);
-        }else{
-            transaction.replace(R.id.fragment_container, fragmentLogin);
+            if(fragmentLogin.isVisible()){
+                transaction.replace(R.id.fragment_container, fragmentSignUp);
+            }
+            else{
+                transaction.replace(R.id.fragment_container, fragmentLogin);
+            }
+            transaction.addToBackStack("");
+            transaction.commit();
+                break;
+
+            //if the login button was pressed
+            case R.id.buttonLogIn:
+                EditText editMail = (EditText)findViewById(R.id.editMail);
+                EditText editPassword = (EditText)findViewById(R.id.editPassword);
+                connect = new ConnectToLocalDB();
+                connect.login(editMail.getText().toString(),editPassword.getText().toString());
+
+                 Log.d("MESSAGE", editMail.getText().toString());
+                Log.d("MESSAGE", editPassword.getText().toString());
+                break;
+
+            default:
+                Log.d("MESSAGE","default");
+
+
         }
-        transaction.addToBackStack("");
-        transaction.commit();
+
     }
 }

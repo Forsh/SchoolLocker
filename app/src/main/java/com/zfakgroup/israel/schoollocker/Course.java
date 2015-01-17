@@ -48,6 +48,7 @@ public class Course extends SearchResult{
 
     public void setLinks(String[] links) {
         this.links = links;
+
     }
 
     @Override
