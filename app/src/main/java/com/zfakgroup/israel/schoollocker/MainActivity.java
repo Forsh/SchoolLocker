@@ -1,9 +1,11 @@
 package com.zfakgroup.israel.schoollocker;
 
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +15,12 @@ import com.example.mac.myapplication.backend.myApi.MyApi;
 
 
 public class MainActivity extends ActionBarActivity {
+// ! Тестирование бекэнда, загруженного на Google App Engine
+//https://apis-explorer.appspot.com/apis-explorer/?base=https://golden-tempest-803.appspot.com/_ah/api#p/
+//Google Account:
+    // testgooglapis@gmail.com
+    // LondonIsA123
+
 
 
     // Обращение к базе данных осуществляется через интерфейс.
@@ -21,6 +29,7 @@ public class MainActivity extends ActionBarActivity {
     private android.app.Fragment fragmentSignUp;
     private android.app.Fragment fragmentLogin;
     private FragmentTransaction transaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,23 +38,23 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.fullscreen);
 
 
+        fragmentLogin = new FragmentLogIn();
+        fragmentSignUp = new FragmentSignUp();
+        transaction = getFragmentManager().beginTransaction();
+        //анимация при запуске приложения
+        transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right);
 
+        transaction.replace(R.id.fragment_container, fragmentLogin);
+        //transaction.addToBackStack(null);
+        transaction.commit();
 
-            fragmentLogin = new FragmentLogIn();
-            fragmentSignUp = new FragmentSignUp();
-            transaction = getFragmentManager().beginTransaction();
-            //анимация при запуске приложения
-            transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right);
-
-            transaction.replace(R.id.fragment_container, fragmentLogin);
-            transaction.addToBackStack(null);
-            transaction.commit();
-
-
+        //Форштат. Это асинхронный(в другом потоке) вызов метода, выполняемого на сервере.
+        //Если вывотит Toast("HAS SOME"), значит установлено подключение к серверу и БД.
+        //Надо перенести все обращения в отдельный класс.
+        EndpointsAsyncTask asyncTask = new EndpointsAsyncTask();
+        asyncTask.execute(new Pair<Context, String>(this, "John"));
 
     }
-
-
 
 
     @Override
@@ -69,49 +78,48 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    
+
     @Override
     public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 0 ){
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
             getFragmentManager().popBackStack();
         } else {
             super.onBackPressed();
         }
     }
 
-    public void onClick(View v){
+    public void onClick(View v) {
 
-        switch(v.getId()){
+        switch (v.getId()) {
             //if the signUp button was pressed
-           case R.id.buttonSignUp:
-            transaction = getFragmentManager().beginTransaction();
+            case R.id.buttonSignUp:
+                transaction = getFragmentManager().beginTransaction();
 
-            //  transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN); //вид анимации - проявление
-            transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right, R.animator.slide_in_left, R.animator.slide_in_right);//вид анимации - наплыв сверху
+                //  transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN); //вид анимации - проявление
+                transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right, R.animator.slide_in_left, R.animator.slide_in_right);//вид анимации - наплыв сверху
 
-            if(fragmentLogin.isVisible()){
-                transaction.replace(R.id.fragment_container, fragmentSignUp);
-            }
-            else{
-                transaction.replace(R.id.fragment_container, fragmentLogin);
-            }
-            transaction.addToBackStack("");
-            transaction.commit();
+                if (fragmentLogin.isVisible()) {
+                    transaction.replace(R.id.fragment_container, fragmentSignUp);
+                } else {
+                    transaction.replace(R.id.fragment_container, fragmentLogin);
+                }
+                transaction.addToBackStack("");
+                transaction.commit();
                 break;
 
             //if the login button was pressed
             case R.id.buttonLogIn:
-                EditText editMail = (EditText)findViewById(R.id.editMail);
-                EditText editPassword = (EditText)findViewById(R.id.editPassword);
+                EditText editMail = (EditText) findViewById(R.id.editMail);
+                EditText editPassword = (EditText) findViewById(R.id.editPassword);
                 connect = new ConnectToLocalDB();
-                connect.login(editMail.getText().toString(),editPassword.getText().toString());
+                connect.login(editMail.getText().toString(), editPassword.getText().toString());
 
-                 Log.d("MESSAGE", editMail.getText().toString());
+                Log.d("MESSAGE", editMail.getText().toString());
                 Log.d("MESSAGE", editPassword.getText().toString());
                 break;
 
             default:
-                Log.d("MESSAGE","default");
+                Log.d("MESSAGE", "default");
 
 
         }
