@@ -5,85 +5,103 @@
     tools:context=".MainActivity$PlaceholderFragment"
     android:orientation="vertical">
 
-    <ImageView
-        android:src="@drawable/asdfg"
-        android:layout_width="wrap_content"
-        android:layout_height="77sp"
-        android:id="@+id/imageView"
-        android:cropToPadding="false"
-        android:scaleType="fitStart"
-        android:layout_gravity="top"
-        android:contentDescription="@string/books_bar" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:id="@+id/appName"
-        android:textSize="50sp"
-        android:textIsSelectable="true"
-        android:layout_marginTop="28dp"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#ff003e36" />
-
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/edit_design">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:ems="10"
-            android:id="@+id/editMail"
-            android:hint="@string/edit_mail"
-            android:gravity="center"
-            android:background="@drawable/edit_text_design"
-            android:autoText="false"
-            android:layout_marginTop="4dp" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-        <EditText
+            <ImageView
+                android:src="@drawable/asdfg"
+                android:layout_width="match_parent"
+                android:layout_height="77dp"
+                android:id="@+id/imageView"
+                android:cropToPadding="false"
+                android:scaleType="centerInside"
+                android:contentDescription="@string/books_bar" />
+        </LinearLayout>
+
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/editPassword"
-            android:gravity="center"
-            android:hint="@string/edit_password"
-            android:background="@drawable/edit_text_design"
-            android:layout_marginTop="8dp" />
+            android:layout_height="0dp"
+            android:text="@string/app_name"
+            android:id="@+id/appName"
+            android:textSize="50sp"
+            android:textIsSelectable="true"
+            android:layout_marginTop="28dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#ff003e36"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:id="@+id/linearLayout"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/edit_design"
+            android:layout_marginTop="24dp"
+            android:layout_weight="1">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/editMail"
+                android:hint="@string/edit_mail"
+                android:gravity="center"
+                android:background="@drawable/edit_text_design"
+                android:autoText="false"
+                android:layout_marginTop="4dp"
+                android:layout_weight="1" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/editPassword"
+                android:gravity="center"
+                android:hint="@string/edit_password"
+                android:background="@drawable/edit_text_design"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:text="@string/btn_log_in"
+                android:id="@+id/buttonLogIn"
+                android:background="@drawable/button_design_blue"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/text_button_color"
+                android:layout_marginBottom="4dp"
+                android:textSize="22sp"
+                android:onClick="onClick"
+                android:layout_weight="1" />
+
+        </LinearLayout>
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_log_in"
-            android:id="@+id/buttonLogIn"
-            android:background="@drawable/button_design_blue"
-            android:layout_marginTop="12dp"
+            android:layout_width="120dp"
+            android:layout_height="0dp"
+            android:text="@string/btn_sign_up"
+            android:id="@+id/buttonSignUp"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/button_design_green"
             android:textColor="@color/text_button_color"
-            android:layout_marginBottom="4dp"
             android:textSize="22sp"
-            android:onClick="onClick" />
-
+            android:layout_marginLeft="100dp"
+            android:onClick="onClick"
+            android:layout_weight="1" />
     </LinearLayout>
-
-    <Button
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_sign_up"
-        android:id="@+id/buttonSignUp"
-        android:layout_gravity="center_horizontal|bottom"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/button_design_green"
-        android:textColor="@color/text_button_color"
-        android:textSize="22sp"
-        android:layout_marginLeft="100dp"
-        android:onClick="onClick" />
 
 
 </LinearLayout>
