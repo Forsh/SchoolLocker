@@ -1,5 +1,9 @@
 package com.zfakgroup.israel.schoollocker;
 
+import com.example.mac.myapplication.backend.myApi.model.Course;
+import com.example.mac.myapplication.backend.myApi.model.Group;
+import com.example.mac.myapplication.backend.myApi.model.User;
+
 /**
 * Created by mozartenok on 12.01.15.
 */

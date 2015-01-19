@@ -52,7 +52,7 @@ public class MainActivity extends ActionBarActivity {
         //Если вывотит Toast("HAS SOME"), значит установлено подключение к серверу и БД.
         //Надо перенести все обращения в отдельный класс.
         EndpointsAsyncTask asyncTask = new EndpointsAsyncTask();
-        asyncTask.execute(new Pair<Context, String>(this, "John"));
+        asyncTask.execute(new Pair<Integer, Context>(1,this));
 
     }
 
@@ -111,8 +111,8 @@ public class MainActivity extends ActionBarActivity {
             case R.id.buttonLogIn:
                 EditText editMail = (EditText) findViewById(R.id.editMail);
                 EditText editPassword = (EditText) findViewById(R.id.editPassword);
-                connect = new ConnectToLocalDB();
-                connect.login(editMail.getText().toString(), editPassword.getText().toString());
+//                connect = new ConnectToLocalDB();
+//                connect.login(editMail.getText().toString(), editPassword.getText().toString());
 
                 Log.d("MESSAGE", editMail.getText().toString());
                 Log.d("MESSAGE", editPassword.getText().toString());

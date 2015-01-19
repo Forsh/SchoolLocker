@@ -8,25 +8,26 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mac.myapplication.backend.myApi.model.Course;
+
 import java.util.ArrayList;
 
 /**
  * Created by mac on 13.01.15.
  */
-public class MySearchResultAdapter extends ArrayAdapter<SearchResult> {
-    public MySearchResultAdapter(Context context,int id ,ArrayList<SearchResult> results) {
+public class MySearchResultAdapter extends ArrayAdapter<Course> {
+    public MySearchResultAdapter(Context context,int id ,ArrayList<Course> results) {
         super(context, id, results);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        SearchResult sr = getItem(position);
+        Course sr = getItem(position);
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.search_item, parent, false);
         }
         ((TextView) convertView.findViewById(R.id.nameSearchResult)).setText(sr.getName());
         ((TextView) convertView.findViewById(R.id.descrSearchResult)).setText(sr.getDescription());
-        ((ImageView) convertView.findViewById(R.id.imageSearchResult)).setImageBitmap(sr.getImage());
         return convertView;
     }
 }
