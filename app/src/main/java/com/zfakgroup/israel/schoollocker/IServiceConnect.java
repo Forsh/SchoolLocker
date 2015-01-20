@@ -23,7 +23,7 @@ public interface IServiceConnect {
     public String[] getUniversities(String country);
     // получаем список универов, которые есть в данной стране
 
-    public Group[] getGroupsInUniverstity(String UniversityName);
+    public Group[] getGroupsInUniversity(String UniversityName);
     // Возвращает все группы в университете
     // Group содержит в себе: имя, значок, дата создания, дата завершения обучения в группе
     // описание.
@@ -37,7 +37,7 @@ public interface IServiceConnect {
    public void createCourse(Course newCourse);
     //-//-  как и в группе
 
-    public Course[] getCoursesInUniverstity(String UniversityName);
+    public Course[] getCoursesInUniversity(String UniversityName);
     // Возвращает все группы в университете
     // Group содержит в себе: имя, значок, дата создания, дата завершения обучения в группе
     // описание.
