@@ -14,9 +14,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.mac.myapplication.backend.myApi.model.Group;
+
+import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements AsyncCallback{
+ {
 // ! Тестирование бекэнда, загруженного на Google App Engine
 //https://apis-explorer.appspot.com/apis-explorer/?base=https://golden-tempest-803.appspot.com/_ah/api#p/
 //Google Account:
@@ -27,12 +33,14 @@ public class MainActivity extends ActionBarActivity {
     private ListView listView;
     private View toolbar;
 
+
     // Обращение к базе данных осуществляется через интерфейс.
     IServiceConnect connect;
 
     private android.app.Fragment fragmentSignUp;
     private android.app.Fragment fragmentLogin;
     private FragmentTransaction transaction;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +54,6 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.fullscreen);
 
 
-
         fragmentLogin = new FragmentLogIn();
         fragmentSignUp = new FragmentSignUp();
         transaction = getFragmentManager().beginTransaction();
@@ -57,30 +64,20 @@ public class MainActivity extends ActionBarActivity {
         //transaction.addToBackStack(null);
         transaction.commit();
 
-
-
-        //Форштат. Это асинхронный(в другом потоке) вызов метода, выполняемого на сервере.
-        //Если вывотит Toast("HAS SOME"), значит установлено подключение к серверу и БД.
-        //Надо перенести все обращения в отдельный класс.
-        EndpointsAsyncTask asyncTask = new EndpointsAsyncTask();
-        asyncTask.execute(new Pair<Context, String>(this, "John"));
-
-        toolbar =  findViewById(R.id.app_bar);
-        setSupportActionBar((Toolbar) toolbar);
-    }
-
-
-
-
+        GetGroupAsync asyncTask = new GetGroupAsync();
+        //asyncTask.execute(this,"1",this);
+        ListGroupAsync listGroupAsync = new ListGroupAsync();
+        listGroupAsync.execute(this,this);
+    
+     toolbar =  findViewById(R.id.app_bar);
+     setSupportActionBar((Toolbar) toolbar);
+ }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -129,8 +126,8 @@ public class MainActivity extends ActionBarActivity {
             case R.id.buttonLogIn:
                 EditText editMail = (EditText) findViewById(R.id.editMail);
                 EditText editPassword = (EditText) findViewById(R.id.editPassword);
-                connect = new ConnectToLocalDB();
-                connect.login(editMail.getText().toString(), editPassword.getText().toString());
+//                connect = new ConnectToLocalDB();
+//                connect.login(editMail.getText().toString(), editPassword.getText().toString());
 
                 Log.d("MESSAGE", editMail.getText().toString());
                 Log.d("MESSAGE", editPassword.getText().toString());
@@ -138,9 +135,13 @@ public class MainActivity extends ActionBarActivity {
 
             default:
                 Log.d("MESSAGE", "default");
-
-
         }
+    }
 
+    @Override
+    public void callback(Object result) {
+        for(Group group : ((List<Group>)result)){
+            Toast.makeText(this, group.getName(),Toast.LENGTH_LONG).show();
+        }
     }
 }

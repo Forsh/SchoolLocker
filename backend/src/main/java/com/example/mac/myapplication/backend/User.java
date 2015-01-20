@@ -1,4 +1,4 @@
-package com.zfakgroup.israel.schoollocker;
+package com.example.mac.myapplication.backend;
 
 /**
  * Created by mac on 14.01.15.
