@@ -3,15 +3,17 @@ package com.zfakgroup.israel.schoollocker;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-
-
+import android.widget.ListView;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -21,7 +23,9 @@ public class MainActivity extends ActionBarActivity {
     // testgooglapis@gmail.com
     // LondonIsA123
 
-
+    private DrawerLayout drawerLayout;
+    private ListView listView;
+    private View toolbar;
 
     // Обращение к базе данных осуществляется через интерфейс.
     IServiceConnect connect;
@@ -34,8 +38,13 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
+        drawerLayout=(DrawerLayout) findViewById(R.id.drawerLayout);
+        listView=(ListView) findViewById(R.id.drawerList);
         // Главный экран - контейнер фрагментов во весь экран
         setContentView(R.layout.fullscreen);
+
 
 
         fragmentLogin = new FragmentLogIn();
@@ -48,13 +57,19 @@ public class MainActivity extends ActionBarActivity {
         //transaction.addToBackStack(null);
         transaction.commit();
 
+
+
         //Форштат. Это асинхронный(в другом потоке) вызов метода, выполняемого на сервере.
         //Если вывотит Toast("HAS SOME"), значит установлено подключение к серверу и БД.
         //Надо перенести все обращения в отдельный класс.
         EndpointsAsyncTask asyncTask = new EndpointsAsyncTask();
         asyncTask.execute(new Pair<Context, String>(this, "John"));
 
+        toolbar =  findViewById(R.id.app_bar);
+        setSupportActionBar((Toolbar) toolbar);
     }
+
+
 
 
     @Override
@@ -63,6 +78,9 @@ public class MainActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

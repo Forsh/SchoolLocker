@@ -34,6 +34,13 @@
     <string name="edit_text_city" />
     <string name="edit_text_date_begin" />
     <string name="edit_date_hint">01.01.2010</string>
+    <string-array name="planets">
+        <item >1</item>
+        <item >2</item>
+        <item >3</item>
+        <item >4</item>
+        <item >5</item>
+    </string-array>
 
 
 
