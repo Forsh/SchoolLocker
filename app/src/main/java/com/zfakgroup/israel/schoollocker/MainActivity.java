@@ -11,6 +11,7 @@ import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -39,6 +40,7 @@ public class MainActivity extends ActionBarActivity {
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private ListView listView;
+    private String[] menu;
 
     public MainActivity() {
     }
@@ -73,12 +75,17 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        listView = (ListView) findViewById(R.id.drawerList);
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         showActionBar(true);
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        menu = getResources().getStringArray(R.array.menu);
+        listView = (ListView) findViewById(R.id.drawerList);
+        //listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, menu));
+
+
     }
 
     public void showActionBar(boolean sw) {

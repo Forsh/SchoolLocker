@@ -220,8 +220,7 @@
     <ListView
         android:id="@+id/drawerList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:entries="@array/planets">
+        android:layout_height="wrap_content">
 
     </ListView>
 

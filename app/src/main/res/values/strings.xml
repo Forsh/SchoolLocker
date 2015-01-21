@@ -34,7 +34,7 @@
     <string name="edit_text_city" />
     <string name="edit_text_date_begin" />
     <string name="edit_date_hint">01.01.2010</string>
-    <string-array name="planets">
+    <string-array name="menu">
         <item >Home</item>
         <item >Creating course</item>
         <item >Creating group</item>
