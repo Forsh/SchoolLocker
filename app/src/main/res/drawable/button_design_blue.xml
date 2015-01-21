@@ -17,18 +17,16 @@
         </shape>
     </item>
 
-
-
     <item>
         <shape>
             <gradient
-                android:startColor="#00BFA5"
-                android:endColor="#00BFA5"
+                android:startColor="#ff00b8ae"
+                android:endColor="#ff00b8ae"
                 android:angle="270" />
             <stroke
 
                 android:width="1dp"
-                android:color="#00BFA5" />
+                android:color="#ff00a399" />
             <corners
                 android:radius="10dp" />
             <padding

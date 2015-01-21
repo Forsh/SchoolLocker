@@ -3,53 +3,43 @@ package com.zfakgroup.israel.schoollocker;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.mac.myapplication.backend.myApi.model.Country;
+import com.example.mac.myapplication.backend.myApi.model.Course;
 import com.example.mac.myapplication.backend.myApi.model.Group;
 
 import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity implements AsyncCallback{
-
+public class MainActivity extends ActionBarActivity{
 // ! Тестирование бекэнда, загруженного на Google App Engine
 //https://apis-explorer.appspot.com/apis-explorer/?base=https://golden-tempest-803.appspot.com/_ah/api#p/
 //Google Account:
     // testgooglapis@gmail.com
     // LondonIsA123
 
-    DrawerLayout drawerLayout;
-    ListView listView;
-    View toolbar;
 
 
     // Обращение к базе данных осуществляется через интерфейс.
     IServiceConnect connect;
 
-    android.app.Fragment fragmentSignUp;
-    android.app.Fragment fragmentLogin;
-    FragmentTransaction transaction;
+    private android.app.Fragment fragmentSignUp;
+    private android.app.Fragment fragmentLogin;
+    private FragmentTransaction transaction;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
-        drawerLayout=(DrawerLayout) findViewById(R.id.drawerLayout);
-        listView=(ListView) findViewById(R.id.drawerList);
         // Главный экран - контейнер фрагментов во весь экран
         setContentView(R.layout.fullscreen);
 
@@ -66,12 +56,18 @@ public class MainActivity extends ActionBarActivity implements AsyncCallback{
 
         GetGroupAsync asyncTask = new GetGroupAsync();
         //asyncTask.execute(this,"1",this);
-        ListGroupAsync listGroupAsync = new ListGroupAsync();
-        listGroupAsync.execute(this,this);
-    
-     toolbar =  findViewById(R.id.app_bar);
-     setSupportActionBar((Toolbar) toolbar);
- }
+        ListCourseAsync listGroupAsync = new ListCourseAsync();
+        listGroupAsync.execute(this,new AsyncCallback() {
+            @Override
+            public void callback(Object result) {
+                for(Course group : ((List<Course>)result)){
+                    Toast.makeText(getApplicationContext(), group.getName(),Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -135,13 +131,6 @@ public class MainActivity extends ActionBarActivity implements AsyncCallback{
 
             default:
                 Log.d("MESSAGE", "default");
-        }
-    }
-
-    @Override
-    public void callback(Object result) {
-        for(Group group : ((List<Group>)result)){
-            Toast.makeText(this, group.getName(),Toast.LENGTH_LONG).show();
         }
     }
 }
