@@ -3,6 +3,7 @@ package com.zfakgroup.israel.schoollocker;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.mac.myapplication.backend.myApi.model.Country;
@@ -35,6 +37,11 @@ public class MainActivity extends ActionBarActivity {
     private android.app.Fragment fragmentLogin;
     private FragmentTransaction transaction;
     private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private ListView listView;
+
+    public MainActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +72,9 @@ public class MainActivity extends ActionBarActivity {
                 }
             }
         });
+
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        listView = (ListView) findViewById(R.id.drawerList);
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
