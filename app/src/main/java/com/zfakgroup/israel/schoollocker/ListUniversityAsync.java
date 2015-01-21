@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.widget.Toast;
 
 import com.example.mac.myapplication.backend.myApi.MyApi;
+import com.example.mac.myapplication.backend.myApi.model.Country;
 import com.example.mac.myapplication.backend.myApi.model.Group;
 import com.example.mac.myapplication.backend.myApi.model.University;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -20,42 +21,16 @@ import java.util.List;
 // Доступ к сетевым ресурсам (сервису, базе данных) должен выполняться в отдельном
 // потоке. После выполнения запроса поток вызовет функцию  onPostExecute.
 //
-public class ListUniversityAsync extends AsyncTask<Object, Void, List<University>> {
-    private static MyApi myApiService = null;
-    private Context context;
-    private AsyncCallback asyncCallback;
 
+public class ListUniversityAsync extends EndpointClassAsync {
     @Override
-    protected List<University> doInBackground(Object... params) {
-        init();
-        context = (Context) params[0];
-        asyncCallback = (AsyncCallback)params[1];
+    protected Object doInBackground(Object... params) {
+        super.init((Context) params[0], (AsyncCallback) params[1]);
         try {
-            return myApiService.listUniversities().execute().getItems();
+            return super.myApiService.listCourses().execute().getItems();
         } catch (IOException e) {
-            return new ArrayList<University>();
+            return new ArrayList<Country>();
         }
 
-    }
-
-    @Override
-    protected void onPostExecute(List<University> result) {
-        Toast.makeText(context, "ListGroupAsync", Toast.LENGTH_LONG).show();
-        asyncCallback.callback(result);
-    }
-
-    private void init() {
-        if (myApiService == null) {  // Only do this once
-            MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
-                    new AndroidJsonFactory(), null)
-                    .setRootUrl("https://golden-tempest-803.appspot.com/_ah/api/")
-                    .setGoogleClientRequestInitializer(new GoogleClientRequestInitializer() {
-                        @Override
-                        public void initialize(AbstractGoogleClientRequest<?> abstractGoogleClientRequest) throws IOException {
-                            abstractGoogleClientRequest.setDisableGZipContent(true);
-                        }
-                    });
-            myApiService = builder.build();
-        }
     }
 }
