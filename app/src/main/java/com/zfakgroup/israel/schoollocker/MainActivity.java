@@ -20,13 +20,12 @@ import com.example.mac.myapplication.backend.myApi.model.Group;
 import java.util.List;
 
 
-public class MainActivity extends ActionBarActivity{
+public class MainActivity extends ActionBarActivity {
 // ! Тестирование бекэнда, загруженного на Google App Engine
 //https://apis-explorer.appspot.com/apis-explorer/?base=https://golden-tempest-803.appspot.com/_ah/api#p/
 //Google Account:
     // testgooglapis@gmail.com
     // LondonIsA123
-
 
 
     // Обращение к базе данных осуществляется через интерфейс.
@@ -58,19 +57,26 @@ public class MainActivity extends ActionBarActivity{
         GetGroupAsync asyncTask = new GetGroupAsync();
         //asyncTask.execute(this,"1",this);
         ListCourseAsync listGroupAsync = new ListCourseAsync();
-        listGroupAsync.execute(this,new AsyncCallback() {
+        listGroupAsync.execute(this, new AsyncCallback() {
             @Override
             public void callback(Object result) {
-                for(Course group : ((List<Course>)result)){
-                    Toast.makeText(getApplicationContext(), group.getName(),Toast.LENGTH_LONG).show();
+                for (Course group : ((List<Course>) result)) {
+                    Toast.makeText(getApplicationContext(), group.getName(), Toast.LENGTH_LONG).show();
                 }
             }
         });
 
-        toolbar = (Toolbar)findViewById(R.id.app_bar);
+        toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+        showActionBar(true);
     }
 
+    public void showActionBar(boolean sw) {
+        if (sw)
+            getSupportActionBar().hide();
+        else
+            getSupportActionBar().show();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -108,6 +114,7 @@ public class MainActivity extends ActionBarActivity{
         switch (v.getId()) {
             //if the signUp button was pressed
             case R.id.buttonSignUp:
+                showActionBar(false);
                 transaction = getFragmentManager().beginTransaction();
 
                 //  transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN); //вид анимации - проявление
