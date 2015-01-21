@@ -196,14 +196,37 @@
         </LinearLayout>
     </ScrollView>
 
+<LinearLayout
+    android:orientation="vertical"
+    android:id="@+id/drawerList2"
+    android:layout_width="240dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="left"
+    android:background="#FFF3E0">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/imageView7"
+            android:src="@drawable/asdfg" />
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/drawerList"
-        android:layout_width="240dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="#FFF3E0"
-        android:entries="@array/planets"></ListView>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/planets">
+
+    </ListView>
+
+</LinearLayout>
+
 
 
 </android.support.v4.widget.DrawerLayout>
