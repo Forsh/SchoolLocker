@@ -107,6 +107,7 @@ public class MainActivity extends ActionBarActivity {
         } else {
             super.onBackPressed();
         }
+        showActionBar(true);
     }
 
     public void onClick(View v) {
