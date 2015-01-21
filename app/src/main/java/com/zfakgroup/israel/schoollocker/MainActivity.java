@@ -22,24 +22,24 @@ import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity implements AsyncCallback{
- {
+
 // ! Тестирование бекэнда, загруженного на Google App Engine
 //https://apis-explorer.appspot.com/apis-explorer/?base=https://golden-tempest-803.appspot.com/_ah/api#p/
 //Google Account:
     // testgooglapis@gmail.com
     // LondonIsA123
 
-    private DrawerLayout drawerLayout;
-    private ListView listView;
-    private View toolbar;
+    DrawerLayout drawerLayout;
+    ListView listView;
+    View toolbar;
 
 
     // Обращение к базе данных осуществляется через интерфейс.
     IServiceConnect connect;
 
-    private android.app.Fragment fragmentSignUp;
-    private android.app.Fragment fragmentLogin;
-    private FragmentTransaction transaction;
+    android.app.Fragment fragmentSignUp;
+    android.app.Fragment fragmentLogin;
+    FragmentTransaction transaction;
 
 
     @Override
