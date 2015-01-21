@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 // Доступ к сетевым ресурсам (сервису, базе данных) должен выполняться в отдельном
 // потоке. После выполнения запроса поток вызовет функцию  onPostExecute.
-//
+//n
 // params[2] - String GroupId
 public class GetCourseAsync extends EndpointClassAsync {
     @Override
