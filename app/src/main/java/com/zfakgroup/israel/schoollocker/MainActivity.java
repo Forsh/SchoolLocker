@@ -4,6 +4,7 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.Pair;
 import android.view.Menu;
@@ -34,7 +35,7 @@ public class MainActivity extends ActionBarActivity{
     private android.app.Fragment fragmentSignUp;
     private android.app.Fragment fragmentLogin;
     private FragmentTransaction transaction;
-
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +66,9 @@ public class MainActivity extends ActionBarActivity{
                 }
             }
         });
+
+        toolbar = (Toolbar)findViewById(R.id.app_bar);
+        setSupportActionBar(toolbar);
     }
 
 
