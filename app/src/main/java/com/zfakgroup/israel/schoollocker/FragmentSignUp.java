@@ -8,8 +8,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 /**
@@ -20,8 +22,10 @@ import android.widget.ListView;
  * Use the {@link FragmentSignUp#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentSignUp extends Fragment {
+public class FragmentSignUp extends Fragment implements AdapterView.OnItemClickListener {
 
+    private DrawerLayout drawerLayout;
+    private ListView listView;
     private String[] menu;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -72,13 +76,14 @@ public class FragmentSignUp extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-       View rootView=inflater.inflate(R.layout.fragment_sign_up, container, false);
-        DrawerLayout drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawerLayout);
+       View rootView = inflater.inflate(R.layout.fragment_sign_up, container, false);
 
+
+        drawerLayout = (DrawerLayout) getActivity().findViewById(R.id.drawerLayout);
         menu = getResources().getStringArray(R.array.menu);
-        ListView  listView = (ListView)rootView.findViewById(R.id.drawerList);
+        listView = (ListView)rootView.findViewById(R.id.drawerList);
         listView.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, menu));
-
+        listView.setOnItemClickListener(this);
 
         // Inflate the layout for this fragment
         return rootView;
@@ -109,6 +114,11 @@ public class FragmentSignUp extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(getActivity(), menu[position]+" was selected",Toast.LENGTH_SHORT).show();
     }
 
     /**
