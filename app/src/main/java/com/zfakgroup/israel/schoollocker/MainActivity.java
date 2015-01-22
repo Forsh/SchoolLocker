@@ -38,9 +38,8 @@ public class MainActivity extends ActionBarActivity {
     private android.app.Fragment fragmentLogin;
     private FragmentTransaction transaction;
     private Toolbar toolbar;
-    private DrawerLayout drawerLayout;
-    private ListView listView;
-    private String[] menu;
+
+
 
     public MainActivity() {
     }
@@ -80,10 +79,7 @@ public class MainActivity extends ActionBarActivity {
         setSupportActionBar(toolbar);
         showActionBar(true);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        menu = getResources().getStringArray(R.array.menu);
-        listView = (ListView) findViewById(R.id.drawerList);
-        //listView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, menu));
+
 
 
     }
