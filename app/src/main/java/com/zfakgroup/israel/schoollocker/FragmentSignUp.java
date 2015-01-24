@@ -1,12 +1,15 @@
 package com.zfakgroup.israel.schoollocker;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -23,13 +26,7 @@ import android.widget.Toast;
  * Use the {@link FragmentSignUp#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentSignUp extends Fragment implements AdapterView.OnItemClickListener {
-
-    private DrawerLayout drawerLayout;
-    private ListView listView;
-    private String[] menu;
-
-
+public class FragmentSignUp extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,21 +78,11 @@ public class FragmentSignUp extends Fragment implements AdapterView.OnItemClickL
 
        View rootView = inflater.inflate(R.layout.fragment_sign_up, container, false);
 
-
-        drawerLayout = (DrawerLayout) rootView.findViewById(R.id.drawerLayout);
-        menu = getResources().getStringArray(R.array.menu);
-        listView = (ListView)rootView.findViewById(R.id.drawerList);
-    // заполнение ListView значениями из String Array:
-        listView.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, menu));
-    // реализация нажатие элемента в меню:
-        listView.setOnItemClickListener(this);
-
     // Inflate the layout for this fragment
         return rootView;
 
-
-
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -120,24 +107,6 @@ public class FragmentSignUp extends Fragment implements AdapterView.OnItemClickL
         super.onDetach();
         mListener = null;
     }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(getActivity(), menu[position]+" was selected",Toast.LENGTH_SHORT).show();
-        selectItem(position);
-    }
-
-    public void selectItem(int position) {
-        listView.setItemChecked(position, true);
-        setTitle(menu[position]);
-    }
-
-    public void setTitle(String title)
-    {
-        getActivity().setTitle(title);
-    }
-
-
 
 
     /**

@@ -17,6 +17,7 @@
     <style name="MyCastomToolBarTheme" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:textColorPrimary">@color/text_color</item>
         <item name="android:textColorSecondary">@color/text_color</item>
+        <item name="android:actionBarStyle">@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse</item>
     </style>
 
 

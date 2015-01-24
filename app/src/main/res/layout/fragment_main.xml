@@ -22,7 +22,7 @@
                 android:layout_height="77dp"
                 android:id="@+id/imageView"
                 android:cropToPadding="false"
-                android:scaleType="centerInside"
+                android:scaleType="fitStart"
                 android:contentDescription="@string/books_bar" />
         </LinearLayout>
 
