@@ -9,11 +9,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <include
         android:id="@+id/app_bar"
         layout="@layout/app_bar"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"/>
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
@@ -22,6 +24,7 @@
     </FrameLayout>
 
 </LinearLayout>
+
 
     <LinearLayout
         android:id="@+id/drawerList2"
@@ -34,12 +37,23 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:background="#FF9800">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Menu"
+                android:id="@+id/TextVewMenu"
+                android:layout_gravity="center_horizontal"
+                android:singleLine="false"
+                android:layout_marginTop="12dp" />
 
             <ImageView
                 android:id="@+id/imageView7"
                 android:layout_width="wrap_content"
-                android:layout_height="50dp"
+                android:layout_height="48dp"
                 android:src="@drawable/asdfg" />
 
         </LinearLayout>
@@ -47,12 +61,14 @@
         <ListView
             android:id="@+id/drawerList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
             <!--android:entries="@array/menu"> инизиализируется в классе этого фрагмента-->
 
         </ListView>
 
     </LinearLayout>
+
+
 
 </android.support.v4.widget.DrawerLayout>
 
