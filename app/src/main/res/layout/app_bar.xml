@@ -8,7 +8,7 @@
 
     app:theme="@style/MyCastomToolBarTheme"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
-    android:elevation="6dp">
+    android:elevation="4dp">
 
 
 </android.support.v7.widget.Toolbar>

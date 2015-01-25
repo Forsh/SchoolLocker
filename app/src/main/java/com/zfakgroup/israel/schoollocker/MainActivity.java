@@ -35,7 +35,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
     // Обращение к базе данных осуществляется через интерфейс.
     IServiceConnect connect;
-
+    private int SessionId;
     private android.app.Fragment fragmentSignUp;
     private android.app.Fragment fragmentLogin;
     private FragmentTransaction transaction;
@@ -218,7 +218,9 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
                 EditText editMail = (EditText) findViewById(R.id.editMail);
                 EditText editPassword = (EditText) findViewById(R.id.editPassword);
 //                connect = new ConnectToLocalDB();
-//                connect.login(editMail.getText().toString(), editPassword.getText().toString());
+//                SessionId = connect.login(editMail.getText().toString(), editPassword.getText().toString());
+
+                SessionId = 1;
 
                 Log.d("MESSAGE", editMail.getText().toString());
                 Log.d("MESSAGE", editPassword.getText().toString());
