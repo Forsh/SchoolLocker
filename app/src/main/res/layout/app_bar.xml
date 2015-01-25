@@ -7,7 +7,8 @@
     android:background="#FF9800"
 
     app:theme="@style/MyCastomToolBarTheme"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+    android:elevation="6dp">
 
 
 </android.support.v7.widget.Toolbar>
