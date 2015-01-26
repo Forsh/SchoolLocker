@@ -24,9 +24,9 @@ import java.util.List;
 public class ListGroupAsync extends EndpointClassAsync {
     @Override
     protected Object doInBackground(Object... params) {
-        super.init((Context) params[0], (AsyncCallback) params[1]);
+        super.init((AsyncCallback) params[1]);
         try {
-            return super.myApiService.listGroups().execute().getItems();
+            return super.myApiService.listGroups("").execute().getItems();
         } catch (IOException e) {
             return new ArrayList<Country>();
         }

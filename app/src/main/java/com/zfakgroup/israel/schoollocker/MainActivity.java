@@ -16,11 +16,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.mac.myapplication.backend.myApi.model.Country;
 import com.example.mac.myapplication.backend.myApi.model.Course;
 import com.example.mac.myapplication.backend.myApi.model.Group;
+import com.example.mac.myapplication.backend.myApi.model.User;
 
 import java.util.List;
 
@@ -31,7 +33,6 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 //Google Account:
     // testgooglapis@gmail.com
     // LondonIsA123
-
 
     // Обращение к базе данных осуществляется через интерфейс.
     IServiceConnect connect;
@@ -44,20 +45,38 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     private ListView listView;
     private String[] menu;
     private ActionBarDrawerToggle drawerListener;
-
+    private int SessionId;
 
     public MainActivity() {
+
     }
+
+
+    public class LogInListener implements AsyncCallback{
+
+        @Override
+        public void callback(Object result) {
+            if (result instanceof User) {
+                Toast.makeText(getApplicationContext(), "Logged in user № " + ((User) result).getId().toString(), Toast.LENGTH_LONG).show();
+                SessionId = ((User) result).getId();
+            }
+        }
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        connect = new GoogleServiceConnect();
+        connect.setListener("login", new LogInListener());
+
 
         // Главный экран - контейнер фрагментов во весь экран
         setContentView(R.layout.fullscreen);
 
 
-        fragmentLogin = new FragmentLogIn();
+        fragmentLogin = new FragmentSearch();
         fragmentSignUp = new FragmentSignUp();
         transaction = getFragmentManager().beginTransaction();
         //анимация при запуске приложения
@@ -66,18 +85,18 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         transaction.replace(R.id.fragment_container, fragmentLogin);
         //transaction.addToBackStack(null);
         transaction.commit();
-
-        GetGroupAsync asyncTask = new GetGroupAsync();
-        //asyncTask.execute(this,"1",this);
-        ListCourseAsync listGroupAsync = new ListCourseAsync();
-        listGroupAsync.execute(this, new AsyncCallback() {
-            @Override
-            public void callback(Object result) {
-                for (Course group : ((List<Course>) result)) {
-                    Toast.makeText(getApplicationContext(), group.getName(), Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+//
+//        GetGroupAsync asyncTask = new GetGroupAsync();
+//        //asyncTask.execute(this,"1",this);
+//        ListCourseAsync listGroupAsync = new ListCourseAsync();
+//        listGroupAsync.execute(this, new AsyncCallback() {
+//            @Override
+//            public void callback(Object result) {
+//                for (Course group : ((List<Course>) result)) {
+//                    Toast.makeText(getApplicationContext(), group.getName(), Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
 
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
@@ -217,8 +236,11 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
             case R.id.buttonLogIn:
                 EditText editMail = (EditText) findViewById(R.id.editMail);
                 EditText editPassword = (EditText) findViewById(R.id.editPassword);
-//                connect = new ConnectToLocalDB();
-//                connect.login(editMail.getText().toString(), editPassword.getText().toString());
+                ProgressBar progressBar = (ProgressBar) findViewById(R.id.logInProgressBar);
+                progressBar.setVisibility(View.VISIBLE);
+                findViewById(R.id.buttonSignUp).setVisibility(View.GONE);
+
+                connect.login(editMail.getText().toString(), editPassword.getText().toString());
 
                 Log.d("MESSAGE", editMail.getText().toString());
                 Log.d("MESSAGE", editPassword.getText().toString());

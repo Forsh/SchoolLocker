@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class GetCourseAsync extends EndpointClassAsync {
     @Override
     protected Object doInBackground(Object... params) {
-        super.init((Context) params[0], (AsyncCallback) params[1]);
+        super.init((AsyncCallback) params[1]);
         try {
             return super.myApiService.getCourse(params[2].toString()).execute();
         } catch (IOException e) {

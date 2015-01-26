@@ -33,11 +33,26 @@ import com.google.appengine.api.utils.SystemProperty;
 @Api(name = "myApi", version = "v1", namespace = @ApiNamespace(ownerDomain = "backend.myapplication.mac.example.com", ownerName = "backend.myapplication.mac.example.com", packagePath = ""))
 public class MyEndpoint {
     private static final String GET_GROUP_QUERY = "SELECT Name, Description FROM GROUPS WHERE Id = ";
-    private static final String LIST_GROUPS_QUERY = "SELECT * FROM GROUPS";
+    private static final String LIST_GROUPS_QUERY =
+            "SELECT * FROM GROUPS " +
+            "JOIN " +
+            "USERSINGROUPS " +
+            "ON " +
+            "USERSINGROUPS.GroupId = GROUPS.Id " +
+            "having " +
+            "USERSINGROUPS.UserId =";
     private static final String GET_COURSE_QUERY = "SELECT Name, Description FROM COURSES WHERE Id = " ;
-    private static final String LIST_COURSES_QUERY = "SELECT * FROM COURSES";
+    private static final String LIST_COURSES_QUERY =
+            "SELECT * FROM COURSES "; /*+
+            "JOIN " +
+            "USERSINCOURSES " +
+            "ON " +
+            "USERSINCOURSES.CourseId = COURSES.Id " +
+            "having " +
+            "USERSINCOURSES.UserId = ";*/
     private static final String LIST_COUNTRIES_QUERY = "SELECT * FROM COUNTRIES";
     private static final String LIST_UNIVERSITIES_QUERY = "SELECT * FROM UNIVERSITIES";
+    private static final String GET_USER = "SELECT * FROM USERS";
 
     //region A simple endpoint method that takes a name and says Hi back
 /*
@@ -57,10 +72,10 @@ public class MyEndpoint {
     }
 
     @ApiMethod(name = "getGroup")
-    public Group getGroup(@Named("id") String id){
+    public Group getGroup(@Named("id") String group_id){
         Group found = new Group();
         try {
-            ResultSet resultSet = doQuery(GET_GROUP_QUERY+id);
+            ResultSet resultSet = doQuery(GET_GROUP_QUERY+group_id);
             if (resultSet.next()) {
                 found.setName(
                         resultSet.getString("Name"));
@@ -82,11 +97,14 @@ public class MyEndpoint {
     }
 
 
-    @ApiMethod(name = "listGroups")
-    public List<Group> listGroups(){
+    @ApiMethod(name = "listGroups", path = "listGroups")
+    public List<Group> listGroups(@Named("id") String id){
+        if (id == ""){
+            id = "USERSINGROUPS.UserId";
+        }
         ArrayList<Group> groupArrayList = new ArrayList<>();
         try {
-            ResultSet resultSet = doQuery(LIST_GROUPS_QUERY);
+            ResultSet resultSet = doQuery(LIST_GROUPS_QUERY+id);
             while (resultSet.next()) {
                 Group found = new Group();
                 found.setName(
@@ -107,10 +125,10 @@ public class MyEndpoint {
 
 
     @ApiMethod(name = "getCourse", path = "getCourse")
-    public Course getCourse(@Named("id") String id){
+    public Course getCourse(@Named("id") String course_id){
         Course found = new Course();
         try {
-            ResultSet resultSet = doQuery(GET_COURSE_QUERY+id);
+            ResultSet resultSet = doQuery(GET_COURSE_QUERY+course_id);
             if (resultSet.next()) {
                 found.setName(
                         resultSet.getString("Name"));
@@ -133,10 +151,13 @@ public class MyEndpoint {
 
 
     @ApiMethod(name = "listCourses", path = "listCourses")
-    public ArrayList<Course> listCourses(){
+    public ArrayList<Course> listCourses(@Named("id") String id){
+//        if (id == ""){
+//            id = "USERSINCOURSES.UserId";
+//        }
         ArrayList<Course> groupArrayList = new ArrayList<>();
         try {
-            ResultSet resultSet = doQuery(LIST_COURSES_QUERY);
+            ResultSet resultSet = doQuery(LIST_COURSES_QUERY+id);
             while (resultSet.next()) {
                 Course found = new Course();
                 found.setName(
@@ -218,5 +239,34 @@ public class MyEndpoint {
             resultSet= conn.createStatement().executeQuery(query);
 
         return resultSet;
+    }
+
+    @ApiMethod(name = "login", path = "login")
+    public User login(@Named("email") String email, @Named("password") String password){
+        User found = new User();
+        try {
+            ResultSet resultSet = doQuery(GET_USER);
+            if (resultSet.next()) {
+                found.setName(
+                        resultSet.getString("Name")
+                );
+                found.setId(
+                        resultSet.getInt("Id")
+                );
+                found.setEmail(
+                        resultSet.getString("Email")
+                );
+            }
+
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            found.setName(e.toString());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            found.setName(e.toString());
+        }
+
+        return found;
     }
 }

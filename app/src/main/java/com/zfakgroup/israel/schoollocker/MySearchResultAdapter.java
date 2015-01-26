@@ -11,12 +11,13 @@ import android.widget.TextView;
 import com.example.mac.myapplication.backend.myApi.model.Course;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by mac on 13.01.15.
  */
 public class MySearchResultAdapter extends ArrayAdapter<Course> {
-    public MySearchResultAdapter(Context context,int id ,ArrayList<Course> results) {
+    public MySearchResultAdapter(Context context, int id , Course[] results) {
         super(context, id, results);
     }
 

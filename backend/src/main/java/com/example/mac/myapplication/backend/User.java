@@ -4,6 +4,7 @@ package com.example.mac.myapplication.backend;
  * Created by mac on 14.01.15.
  */
 public class User {
+    private int id;
     private String name;
     private String email;
     public User(String name, String email, String nickname){
@@ -29,5 +30,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

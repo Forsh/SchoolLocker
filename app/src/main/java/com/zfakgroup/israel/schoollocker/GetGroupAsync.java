@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class GetGroupAsync extends EndpointClassAsync {
     @Override
     protected Object doInBackground(Object... params) {
-        super.init((Context) params[0], (AsyncCallback) params[1]);
+        super.init((AsyncCallback) params[1]);
         try {
             return super.myApiService.getGroup(params[2].toString()).execute();
         } catch (IOException e) {

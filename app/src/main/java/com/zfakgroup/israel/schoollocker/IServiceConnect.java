@@ -4,12 +4,21 @@ import com.example.mac.myapplication.backend.myApi.model.Course;
 import com.example.mac.myapplication.backend.myApi.model.Group;
 import com.example.mac.myapplication.backend.myApi.model.User;
 
+import java.util.HashMap;
+
 /**
 * Created by mozartenok on 12.01.15.
 */
 public interface IServiceConnect {
 
-    public int login(String email, String password);
+    public HashMap<String, AsyncCallback> listeners = new HashMap<>();
+
+    public void setListener(String name, AsyncCallback listener);
+    // Так как все действия выполняются асинхронно, их последствия должны быть известны обраблотчикам.
+    // Возвращать значения операции не должны (!!!)
+
+
+    public void login(String email, String password);
     //метод отсылает запрос на сервер, где данные сравниваются с данными в базе данных
     //если все правильно, мы получаем SessionID, который нужен для аутентификации всех послед. запросов
 
@@ -23,7 +32,7 @@ public interface IServiceConnect {
     public String[] getUniversities(String country);
     // получаем список универов, которые есть в данной стране
 
-    public Group[] getGroupsInUniversity(String UniversityName);
+    //public Group[] getGroupsInUniversity(String UniversityName);
     // Возвращает все группы в университете
     // Group содержит в себе: имя, значок, дата создания, дата завершения обучения в группе
     // описание.
@@ -37,7 +46,7 @@ public interface IServiceConnect {
    public void createCourse(Course newCourse);
     //-//-  как и в группе
 
-    public Course[] getCoursesInUniversity(String UniversityName);
+    //public Course[] getCoursesInUniversity(String UniversityName);
     // Возвращает все группы в университете
     // Group содержит в себе: имя, значок, дата создания, дата завершения обучения в группе
     // описание.

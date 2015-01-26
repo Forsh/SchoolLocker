@@ -1,24 +1,24 @@
 package com.zfakgroup.israel.schoollocker;
 
-
-import android.content.Context;
-import com.example.mac.myapplication.backend.myApi.model.Country;
+import com.example.mac.myapplication.backend.myApi.model.User;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 // Доступ к сетевым ресурсам (сервису, базе данных) должен выполняться в отдельном
 // потоке. После выполнения запроса поток вызовет функцию  onPostExecute.
 //
-public class ListCountryAsync extends EndpointClassAsync {
+// params[2] - String GroupId
+public class GetLoginAsync extends EndpointClassAsync {
     @Override
     protected Object doInBackground(Object... params) {
-        super.init((AsyncCallback)params[1]);
-        try {
-            return super.myApiService.listCountries().execute().getItems();
-        } catch (IOException e) {
-            return new ArrayList<Country>();
-        }
+        //AsyncCallback, email, password
+        super.init((AsyncCallback) params[0]);
 
+        try {
+            return super.myApiService.login((String)params[1],(String)params[2]).execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new User();
+        }
     }
 }

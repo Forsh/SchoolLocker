@@ -22,16 +22,14 @@ import java.util.List;
 //
 public abstract class EndpointClassAsync extends AsyncTask<Object, Void, Object> {
     protected static MyApi myApiService = null;
-    protected Context context;
     protected AsyncCallback asyncCallback;
 
     @Override
     protected void onPostExecute(Object result) {
-        Toast.makeText(context, "ListGroupAsync", Toast.LENGTH_LONG).show();
         asyncCallback.callback(result);
     }
 
-    protected void init(Context context, AsyncCallback asyncCallback) {
+    protected void init(AsyncCallback asyncCallback) {
         if (myApiService == null) {  // Only do this once
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(),
                     new AndroidJsonFactory(), null)
@@ -44,7 +42,6 @@ public abstract class EndpointClassAsync extends AsyncTask<Object, Void, Object>
                     });
             myApiService = builder.build();
         }
-        this.context = context;
         this.asyncCallback = asyncCallback;
     }
 }
