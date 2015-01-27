@@ -34,7 +34,8 @@
     <string name="edit_text_city"></string>
     <string name="edit_text_date_begin"></string>
     <string name="edit_date_hint">01.01.2010</string>
-
+    <string name="courses">COURSES</string>
+    <string name="groups">GROUPS</string>
     <string-array name="menu">
         <item>Home</item>
         <item>Creating course</item>

@@ -17,6 +17,11 @@ import com.example.mac.myapplication.backend.myApi.model.User;
 
 
 public class LogInActivity extends FragmentActivity {
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        Toast.makeText(this, "Back pressed", Toast.LENGTH_LONG).show();
+    }
 
     public class LogInListener implements AsyncCallback {
 
@@ -48,7 +53,7 @@ public class LogInActivity extends FragmentActivity {
         setContentView(R.layout.fullscreen);
 
 
-        fragmentLogin = new FragmentSearch();
+        fragmentLogin = new FragmentLogIn();
         fragmentSignUp = new FragmentSignUp();
         transaction = getFragmentManager().beginTransaction();
         //анимация при запуске приложения

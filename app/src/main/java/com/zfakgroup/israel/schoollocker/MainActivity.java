@@ -1,30 +1,30 @@
 package com.zfakgroup.israel.schoollocker;
 
-import android.app.FragmentTransaction;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.util.AttributeSet;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.mac.myapplication.backend.myApi.model.Country;
-import com.example.mac.myapplication.backend.myApi.model.Course;
-import com.example.mac.myapplication.backend.myApi.model.Group;
-import com.example.mac.myapplication.backend.myApi.model.User;
-
-import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
@@ -48,16 +48,42 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     public MainActivity() {
     }
 
+    private int getSavedUserId(){
+        return 1;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
 
 
+        if (savedInstanceState == null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            FragmentCourses fragment = new FragmentCourses();
+            transaction.replace(R.id.fragment_container, fragment);
+            transaction.commit();
+        }
 
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
+        if (getSavedUserId() == 0){
+            startActivity(new Intent(this, LogInActivity.class));
+        }
+
         setContentView(R.layout.activity_log_in);
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentCourses()).commit();
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
