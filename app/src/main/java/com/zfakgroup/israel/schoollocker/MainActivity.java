@@ -76,7 +76,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         setContentView(R.layout.fullscreen);
 
 
-        fragmentLogin = new FragmentLogIn();
+        fragmentLogin = new FragmentSearch();
         fragmentSignUp = new FragmentSignUp();
         transaction = getFragmentManager().beginTransaction();
         //анимация при запуске приложения
@@ -85,18 +85,6 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         transaction.replace(R.id.fragment_container, fragmentLogin);
         //transaction.addToBackStack(null);
         transaction.commit();
-
-        GetGroupAsync asyncTask = new GetGroupAsync();
-        //asyncTask.execute(this,"1",this);
-        ListCourseAsync listGroupAsync = new ListCourseAsync();
-        listGroupAsync.execute(this, new AsyncCallback() {
-            @Override
-            public void callback(Object result) {
-                for (Course group : ((List<Course>) result)) {
-                    Toast.makeText(getApplicationContext(), group.getName(), Toast.LENGTH_LONG).show();
-                }
-            }
-        });
 
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_marginTop="12dp"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
     android:layout_marginLeft="8dp"
     android:layout_marginRight="8dp"
     android:background="@drawable/list_group_design"
-xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/"
+    android:id="@+id/FragmentCourse"
     android:elevation="2dp">
 
 <ImageView
@@ -52,16 +52,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_marginTop="6dp"
         android:id="@+id/linearLayout3">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Professor Konechno Lopuh"
-        android:id="@+id/nameSearchResult"
-        android:textIsSelectable="false"
-        android:paddingLeft="4dp"
-        android:paddingBottom="4dp" />
-</LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
     android:orientation="vertical"
@@ -89,5 +80,19 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/textView3"
         android:layout_marginTop="6dp" />
 </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Professor Konechno Lopuh"
+        android:id="@+id/nameSearchResult"
+        android:textIsSelectable="false"
+        android:paddingTop="4dp"
+        android:paddingLeft="4dp"
+        android:paddingBottom="4dp"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
