@@ -1,6 +1,5 @@
 package com.zfakgroup.israel.schoollocker;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,6 +9,9 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.mac.myapplication.backend.myApi.model.Course;
+import com.example.mac.myapplication.backend.myApi.model.Group;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +23,8 @@ public class FragmentCourses extends Fragment {
     private SlidingTabLayout mSlidingTabLayout;
 
     private List<SamplePagerItem> mTabs = new ArrayList<SamplePagerItem>();
+    Course[] courses;
+    Group[] groups;
 
     public FragmentCourses() {
         super();
@@ -37,6 +41,21 @@ public class FragmentCourses extends Fragment {
         mTabs.add(new SamplePagerItem(
                 getString(R.string.groups) // Title
         ));
+
+
+        ListGroupAsync listGroupAsync = new ListGroupAsync();
+        listGroupAsync.execute(new AsyncCallback() {
+            @Override
+            public void callback(Object result) {
+                if (result instanceof List) {
+                    ArrayList<Group> arrayCourses = (ArrayList<Group>) result;
+                    groups = new Group[((ArrayList<Course>) result).size()];
+                    arrayCourses.toArray(groups);
+                }
+            }
+        });
+
+
     }
 
     @Override
@@ -71,11 +90,11 @@ public class FragmentCourses extends Fragment {
         /**
          * Return the {@link android.support.v4.app.Fragment} to be displayed at {@code position}.
          * <p/>
-         * Here we return the value returned from {@link SamplePagerItem#createFragment()}.
+         * Here we return the value returned from
          */
         @Override
         public Fragment getItem(int i) {
-            return mTabs.get(i).createFragment();
+            return mTabs.get(i).createFragment(i);
         }
 
         @Override
@@ -102,25 +121,32 @@ public class FragmentCourses extends Fragment {
     static class SamplePagerItem {
         private final CharSequence mTitle;
 
-        SamplePagerItem(CharSequence title) {
-            mTitle = title;
+        SamplePagerItem(CharSequence mTitle) {
+            this.mTitle = mTitle;
         }
 
         /**
          * @return A new {@link Fragment} to be displayed by a {@link ViewPager}
          */
-        Fragment createFragment() {
-            return ContentFragment.newInstance(mTitle, null);
+        Fragment createFragment(int position) {
+            switch (position) {
+                case 0:
+                    return ContentCourseFragment.newInstance(mTitle);
+                case 1:
+                    return ContentGroupFragment.newInstance(mTitle);
+
+            }
+            return new Fragment();
         }
 
-        /**
-         * @return the title which represents this tab. In this sample this is used directly by
-         * {@link android.support.v4.view.PagerAdapter#getPageTitle(int)}
-         */
-        CharSequence getTitle() {
-            return mTitle;
+            /**
+             * @return the title which represents this tab. In this sample this is used directly by
+             * {@link android.support.v4.view.PagerAdapter#getPageTitle(int)}
+             */
+            CharSequence getTitle () {
+                return mTitle;
+            }
+
+
         }
-
-
     }
-}
