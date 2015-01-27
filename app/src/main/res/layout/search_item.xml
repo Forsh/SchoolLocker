@@ -7,7 +7,7 @@ android:layout_marginTop="12dp"
     android:layout_marginRight="8dp"
     android:background="@drawable/list_group_design"
 xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/"
+
     android:elevation="2dp">
 
 <ImageView
@@ -30,7 +30,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_centerVertical="true"
         android:layout_alignRight="@+id/linearLayout3"
         android:layout_alignEnd="@+id/linearLayout3"
-        android:visibility="invisible" />
+        android:visibility="gone"
+       />
 
     <CheckBox
         android:layout_width="wrap_content"

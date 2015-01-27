@@ -36,72 +36,32 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
 
     // Обращение к базе данных осуществляется через интерфейс.
-    IServiceConnect connect;
 
-    private android.app.Fragment fragmentSignUp;
-    private android.app.Fragment fragmentLogin;
-    private FragmentTransaction transaction;
+
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private ListView listView;
     private String[] menu;
     private ActionBarDrawerToggle drawerListener;
-    private int SessionId;
 
 
     public MainActivity() {
     }
 
 
-    public class LogInListener implements AsyncCallback{
-
-        @Override
-        public void callback(Object result) {
-            if (result instanceof User) {
-                Toast.makeText(getApplicationContext(), "Logged in user № " + ((User) result).getId().toString(), Toast.LENGTH_LONG).show();
-                SessionId = ((User) result).getId();
-            }
-        }
-    }
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        connect = new GoogleServiceConnect();
-        connect.setListener("login", new LogInListener());
 
-        // Главный экран - контейнер фрагментов во весь экран
-        setContentView(R.layout.fullscreen);
-
-
-        fragmentLogin = new FragmentLogIn();
-        fragmentSignUp = new FragmentSignUp();
-        transaction = getFragmentManager().beginTransaction();
-        //анимация при запуске приложения
-        transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right);
-
-        transaction.replace(R.id.fragment_container, fragmentLogin);
-        //transaction.addToBackStack(null);
-        transaction.commit();
-
-        GetGroupAsync asyncTask = new GetGroupAsync();
-        //asyncTask.execute(this,"1",this);
-        ListCourseAsync listGroupAsync = new ListCourseAsync();
-        listGroupAsync.execute(this, new AsyncCallback() {
-            @Override
-            public void callback(Object result) {
-                for (Course group : ((List<Course>) result)) {
-                    Toast.makeText(getApplicationContext(), group.getName(), Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+        setContentView(R.layout.activity_log_in);
 
 
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-        showActionBar(true);
+        //showActionBar(true);
 
 
         menu = getResources().getStringArray(R.array.menu);
@@ -210,47 +170,4 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         }
         showActionBar(true);
     }
-
-    public void onClick(View v) {
-
-        switch (v.getId()) {
-            //if the signUp button was pressed
-            case R.id.buttonSignUp:
-                showActionBar(false);
-                transaction = getFragmentManager().beginTransaction();
-
-                //  transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN); //вид анимации - проявление
-                transaction.setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right,
-                                                R.animator.slide_in_left, R.animator.slide_in_right);//вид анимации - наплыв сверху
-
-                if (fragmentLogin.isVisible()) {
-                    transaction.replace(R.id.fragment_container, fragmentSignUp);
-                } else {
-                    transaction.replace(R.id.fragment_container, fragmentLogin);
-                }
-                transaction.addToBackStack("");
-                transaction.commit();
-                break;
-
-            //if the login button was pressed
-            case R.id.buttonLogIn:
-                EditText editMail = (EditText) findViewById(R.id.editMail);
-                EditText editPassword = (EditText) findViewById(R.id.editPassword);
-                ProgressBar progressBar = (ProgressBar) findViewById(R.id.logInProgressBar);
-                progressBar.setVisibility(View.VISIBLE);
-                findViewById(R.id.buttonSignUp).setVisibility(View.GONE);
-
-                connect.login(editMail.getText().toString(), editPassword.getText().toString());
-
-                Log.d("MESSAGE", editMail.getText().toString());
-                Log.d("MESSAGE", editPassword.getText().toString());
-                break;
-
-            default:
-                Log.d("MESSAGE", "default");
-        }
-    }
-
-
-
 }

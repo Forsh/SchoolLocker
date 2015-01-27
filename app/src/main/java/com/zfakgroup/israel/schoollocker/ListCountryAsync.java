@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class ListCountryAsync extends EndpointClassAsync {
     @Override
     protected Object doInBackground(Object... params) {
-        super.init((AsyncCallback)params[1]);
+        super.init((AsyncCallback)params[0]);
         try {
             return super.myApiService.listCountries().execute().getItems();
         } catch (IOException e) {

@@ -25,9 +25,9 @@ import java.util.List;
 public class ListUniversityAsync extends EndpointClassAsync {
     @Override
     protected Object doInBackground(Object... params) {
-        super.init((AsyncCallback) params[1]);
+        super.init((AsyncCallback) params[0]);
         try {
-            return super.myApiService.listCourses("").execute().getItems();
+            return super.myApiService.listUniversities().execute().getItems();
         } catch (IOException e) {
             return new ArrayList<Country>();
         }

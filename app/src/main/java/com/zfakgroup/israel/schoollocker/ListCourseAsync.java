@@ -26,7 +26,7 @@ public class ListCourseAsync extends EndpointClassAsync {
     protected Object doInBackground(Object... params) {
         super.init((AsyncCallback) params[0]);
         String request =" ";
-        if(params[1] != null && params[2] != null && params[1].toString() =="user" )
+        if(params.length >=3  && params[1].toString() == "user" )
             request+=
 
                     "JOIN " +
@@ -35,7 +35,7 @@ public class ListCourseAsync extends EndpointClassAsync {
                             "USERSINCOURSES.CourseId = COURSES.Id " +
                             "having " +
                             "USERSINCOURSES.UserId = "+ params[2].toString();
-        if(params[1] != null && params[2] != null && params[1].toString() =="univ" )
+        if(params.length >=3 && params[1].toString() =="univ" )
             request+=
 
                     "JOIN " +

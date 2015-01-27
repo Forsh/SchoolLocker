@@ -29,6 +29,7 @@ public class MySearchResultAdapter extends ArrayAdapter<Course> {
         }
         ((TextView) convertView.findViewById(R.id.nameSearchResult)).setText(sr.getName());
         ((TextView) convertView.findViewById(R.id.descrSearchResult)).setText(sr.getDescription());
+        convertView.findViewById(R.id.buttonADD).setVisibility(View.VISIBLE);
         return convertView;
     }
 }
