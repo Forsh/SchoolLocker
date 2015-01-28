@@ -13,6 +13,7 @@ import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -239,6 +240,64 @@ public class MyEndpoint {
             resultSet= conn.createStatement().executeQuery(query);
 
         return resultSet;
+    }
+
+    @ApiMethod(name = "createCourse", path = "createCourse", httpMethod = "POST")
+    public Course createCourse(Course course){
+
+        String url;
+        if (SystemProperty.environment.value() ==
+                SystemProperty.Environment.Value.Production) {
+            // Connecting from App Engine.
+            // Load the class that provides the "jdbc:google:mysql://"
+            // prefix.
+            try {
+                Class.forName("com.mysql.jdbc.GoogleDriver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            url =
+                    "jdbc:google:mysql://golden-tempest-803:forshtata/MyDatabase?user=root";
+        } else {
+            // Connecting from an external network.
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            url = "jdbc:mysql://173.194.254.146:3306?user=root";
+        }
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //INSERT INTO COURSES(Name, Description) VALUES("Nuclear physics", "Harvard University course leads you through newest nuclear phisics theories");
+        String query = "INSERT INTO COURSES(Name, Description) VALUES( ? , ? )";
+        if (conn != null) {
+            try {
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setString(1, course.getName());
+                ps.setString(2, course.getDescription());
+                int success = 2;
+                success = ps.executeUpdate();
+                if (success == 1) {
+                    Course course1 = new Course();
+                    course1.setDescription("Success!");
+                    return course1;
+                } else if (success == 0) {
+                    Course course1 = new Course();
+                    course1.setDescription("Failed!");
+                    return course1;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return new Course();
     }
 
     @ApiMethod(name = "login", path = "login")

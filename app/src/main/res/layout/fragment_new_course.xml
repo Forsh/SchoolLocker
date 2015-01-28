@@ -15,7 +15,7 @@
             android:text="@string/select_group"></TextView>
 
         <Spinner
-            android:id="@+id/spinner"
+            android:id="@+id/selectGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal" />
@@ -33,9 +33,9 @@
             android:text="@string/name"></TextView>
 
         <EditText
-            android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/inputName"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
@@ -51,7 +51,7 @@
             android:text="@string/description"></TextView>
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/inputDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right" />
@@ -95,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/create_course"
-        android:id="@+id/button"
+        android:id="@+id/buttonCreateCourse"
         android:layout_gravity="center_horizontal" />
 
 

@@ -19,6 +19,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -109,6 +110,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         listView.setOnItemClickListener(this);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         drawerListener = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.drower_open,
                 R.string.drawer_close) {
@@ -153,6 +155,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Toast.makeText(this, menu[position] + " was selected", Toast.LENGTH_SHORT).show();
         selectItem(position);
+        drawerLayout.closeDrawer(Gravity.START);
 
     }
 
