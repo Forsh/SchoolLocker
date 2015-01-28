@@ -43,13 +43,14 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     private ListView listView;
     private String[] menu;
     private ActionBarDrawerToggle drawerListener;
+    private int SessionId;
 
 
     public MainActivity() {
     }
 
     private int getSavedUserId(){
-        return 1;
+        return 0;
     }
 
     @Override
@@ -70,6 +71,14 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     @Override
     protected void onSaveInstanceState(Bundle outState) {
     }
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    Intent data) {
+        if (requestCode == 0) {
+                SessionId = resultCode;
+            }
+        }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +87,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
 
         if (getSavedUserId() == 0){
-            startActivity(new Intent(this, LogInActivity.class));
+            startActivityForResult(new Intent(this, LogInActivity.class), 0);
         }
 
         setContentView(R.layout.activity_log_in);

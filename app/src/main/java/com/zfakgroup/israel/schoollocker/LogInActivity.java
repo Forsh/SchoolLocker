@@ -30,6 +30,8 @@ public class LogInActivity extends FragmentActivity {
             if (result instanceof User) {
                 Toast.makeText(getApplicationContext(), "Logged in user № " + ((User) result).getId().toString(), Toast.LENGTH_LONG).show();
                 SessionId = ((User) result).getId();
+                setResult(SessionId);
+                finish();
             }
         }
     }
