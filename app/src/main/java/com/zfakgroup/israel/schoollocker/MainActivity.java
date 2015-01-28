@@ -108,7 +108,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         listView.setOnItemClickListener(this);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        drawerListener = new ActionBarDrawerToggle(this, drawerLayout,
+        drawerListener = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.drower_open,
                 R.string.drawer_close) {
 
