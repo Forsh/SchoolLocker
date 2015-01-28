@@ -48,4 +48,10 @@
     <string name="drawer_close">Close Menu</string>
     <string name="title_activity_log_in">LogInActivity</string>
 
+
+    <string name="select_group">Select group: </string>
+    <string name="name">Name: </string>
+    <string name="description">Descriptions: </string>
+    <string name="ending_date">Ending date: </string>
+    <string name="create_course">Create course</string>
 </resources>
