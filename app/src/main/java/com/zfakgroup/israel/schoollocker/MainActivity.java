@@ -1,9 +1,11 @@
 package com.zfakgroup.israel.schoollocker;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
@@ -26,7 +28,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 
-
 public class MainActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
 // ! Тестирование бекэнда, загруженного на Google App Engine
 //https://apis-explorer.appspot.com/apis-explorer/?base=https://golden-tempest-803.appspot.com/_ah/api#p/
@@ -44,15 +45,16 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     private String[] menu;
     private ActionBarDrawerToggle drawerListener;
     private int SessionId;
-
+    FragmentCourses fragment;
 
     public MainActivity() {
     }
 
-    private int getSavedUserId(){
+    private int getSavedUserId() {
         return 0;
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
@@ -60,7 +62,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
         if (savedInstanceState == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            FragmentCourses fragment = new FragmentCourses();
+            fragment = new FragmentCourses();
             transaction.replace(R.id.fragment_container, fragment);
             transaction.commit();
         }
@@ -71,13 +73,13 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     @Override
     protected void onSaveInstanceState(Bundle outState) {
     }
+
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
         if (requestCode == 0) {
-                SessionId = resultCode;
-            }
+            SessionId = resultCode;
         }
-
+    }
 
 
     @Override
@@ -85,8 +87,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
 
 
-
-        if (getSavedUserId() == 0){
+        if (getSavedUserId() == 0) {
             startActivityForResult(new Intent(this, LogInActivity.class), 0);
         }
 
@@ -123,10 +124,10 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
             }
         };
 
-          drawerLayout.setDrawerListener(drawerListener);
+        drawerLayout.setDrawerListener(drawerListener);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-      }
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -158,6 +159,22 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     public void selectItem(int position) {
         listView.setItemChecked(position, true);
         setTitle(menu[position]);
+        switch (position) {
+            case 3:
+                getSupportFragmentManager().beginTransaction()
+                        //.remove(fragment)
+                        .replace(R.id.fragment_container, new FragmentSearch())
+                        .addToBackStack("")
+                        .commit();
+                break;
+            case 1:
+                getSupportFragmentManager().beginTransaction()
+
+                        .replace(R.id.fragment_container, new FragmentNewCourse())
+                        .addToBackStack("")
+                        .commit();
+                break;
+        }
     }
 
 
