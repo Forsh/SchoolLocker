@@ -6,7 +6,7 @@
     <style name="AppTheme" parent="AppTheme.Base">
         <!-- Customize your theme here. -->
 
-        <item name="android:colorPrimaryDark">@color/primaryDarkGreen</item>
+        <item name="android:colorPrimaryDark">@color/primary_dark</item>
     </style>
 
 
