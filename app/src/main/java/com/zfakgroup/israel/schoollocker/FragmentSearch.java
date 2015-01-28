@@ -69,7 +69,7 @@ public class FragmentSearch extends Fragment {
                 courseResult = new Course[((ArrayList<Course>)result).size()];
                 ((ArrayList<Course>) result).toArray(courseResult);
                 MySearchResultAdapter myAdapter = new MySearchResultAdapter(getActivity(), R.layout.search_item, courseResult);
-                getView().findViewById(R.id.search_input).setVisibility(View.GONE);
+                //getView().findViewById(R.id.search_input).setVisibility(View.GONE);
                 //getView().findViewById(R.id.listViewSearchResult).getLayoutParams().height = 1700;
                 ((ListView)getView().findViewById(R.id.listViewSearchResult)).setAdapter(myAdapter);
             }
