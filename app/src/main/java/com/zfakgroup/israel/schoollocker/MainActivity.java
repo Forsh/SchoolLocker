@@ -183,12 +183,12 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     }
 
 
-    public void showActionBar(boolean sw) {
-        if (sw)
-            getSupportActionBar().hide();
-        else
-            getSupportActionBar().show();
-    }
+//    public void showActionBar(boolean sw) {
+//        if (sw)
+//            getSupportActionBar().hide();
+//        else
+//            getSupportActionBar().show();
+//    }
 
 
     @Override
@@ -220,6 +220,6 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         } else {
             super.onBackPressed();
         }
-        showActionBar(true);
+       // showActionBar(true);
     }
 }

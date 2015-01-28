@@ -6,12 +6,23 @@
     android:orientation="vertical"
     android:gravity="center">
 
+    <TextView
+        android:id="@+id/item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/item_indicator_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <ListView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/groupCourseList"
         android:choiceMode="multipleChoice"
-        />
+        android:layout_marginTop="40dp" />
 
 </LinearLayout>
