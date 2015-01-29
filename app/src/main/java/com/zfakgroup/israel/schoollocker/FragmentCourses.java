@@ -9,6 +9,9 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.mac.myapplication.backend.myApi.model.Course;
 import com.example.mac.myapplication.backend.myApi.model.Group;
@@ -68,6 +71,9 @@ public class FragmentCourses extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
+
 
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
 
@@ -139,14 +145,16 @@ public class FragmentCourses extends Fragment {
             return new Fragment();
         }
 
-            /**
-             * @return the title which represents this tab. In this sample this is used directly by
-             * {@link android.support.v4.view.PagerAdapter#getPageTitle(int)}
-             */
-            CharSequence getTitle () {
-                return mTitle;
-            }
-
-
+        /**
+         * @return the title which represents this tab. In this sample this is used directly by
+         * {@link android.support.v4.view.PagerAdapter#getPageTitle(int)}
+         */
+        CharSequence getTitle() {
+            return mTitle;
         }
+
+
     }
+
+
+}

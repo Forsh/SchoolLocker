@@ -20,8 +20,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mac.myapplication.backend.myApi.model.Course;
 
@@ -75,10 +77,12 @@ public class ContentCourseFragment extends Fragment {
                     ArrayList<Course> arrayCourses = (ArrayList<Course>) result;
                     courses = new Course[((ArrayList<Course>) result).size()];
                     arrayCourses.toArray(courses);
-                    ((ListView) view.findViewById(R.id.groupCourseList)).setAdapter(new MySearchResultAdapter(getActivity(),R.layout.search_item, courses));
+                    ((ListView) view.findViewById(R.id.groupCourseList)).setAdapter(new MySearchResultAdapter(getActivity(), R.layout.search_item, courses, getActivity()));
                 }
             }
         });
+
+
 
 //
 //        Bundle args = getArguments();

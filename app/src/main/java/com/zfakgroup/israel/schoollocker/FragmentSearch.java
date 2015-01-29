@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
@@ -61,6 +62,12 @@ public class FragmentSearch extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
     public class GetCoursesAsyncCallback implements AsyncCallback{
 
         @Override
@@ -68,7 +75,7 @@ public class FragmentSearch extends Fragment {
             if (result instanceof List){
                 courseResult = new Course[((ArrayList<Course>)result).size()];
                 ((ArrayList<Course>) result).toArray(courseResult);
-                MySearchResultAdapter myAdapter = new MySearchResultAdapter(getActivity(), R.layout.search_item, courseResult);
+                MySearchResultAdapter myAdapter = new MySearchResultAdapter(getActivity(), R.layout.search_item, courseResult, getActivity());
                 //getView().findViewById(R.id.search_input).setVisibility(View.GONE);
                 //getView().findViewById(R.id.listViewSearchResult).getLayoutParams().height = 1700;
                 ((ListView)getView().findViewById(R.id.listViewSearchResult)).setAdapter(myAdapter);

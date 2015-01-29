@@ -19,8 +19,12 @@ import com.example.mac.myapplication.backend.myApi.model.User;
 public class LogInActivity extends FragmentActivity {
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
-        Toast.makeText(this, "Back pressed", Toast.LENGTH_LONG).show();
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+        // showActionBar(true);
     }
 
     public class LogInListener implements AsyncCallback {
@@ -108,4 +112,6 @@ public class LogInActivity extends FragmentActivity {
                 Log.d("MESSAGE", "default");
         }
     }
+
+
 }

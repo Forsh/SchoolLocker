@@ -110,7 +110,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         listView.setOnItemClickListener(this);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        //drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         drawerListener = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.drower_open,
                 R.string.drawer_close) {
@@ -163,6 +163,13 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         listView.setItemChecked(position, true);
         setTitle(menu[position]);
         switch (position) {
+            case 0:
+                getSupportFragmentManager().beginTransaction()
+                        //.remove(fragment)
+                        .replace(R.id.fragment_container, new FragmentCourses())
+                        .addToBackStack("")
+                        .commit();
+                break;
             case 3:
                 getSupportFragmentManager().beginTransaction()
                         //.remove(fragment)
@@ -225,4 +232,6 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         }
        // showActionBar(true);
     }
+
+
 }

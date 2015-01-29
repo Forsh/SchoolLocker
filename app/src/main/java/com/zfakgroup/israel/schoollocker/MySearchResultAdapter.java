@@ -1,12 +1,16 @@
 package com.zfakgroup.israel.schoollocker;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mac.myapplication.backend.myApi.model.Course;
 
@@ -17,8 +21,10 @@ import java.util.List;
  * Created by mac on 13.01.15.
  */
 public class MySearchResultAdapter extends ArrayAdapter<Course> {
-    public MySearchResultAdapter(Context context, int id , Course[] results) {
+    Activity activity;
+    public MySearchResultAdapter(Context context, int id , Course[] results, Activity activity) {
         super(context, id, results);
+        this.activity = activity;
     }
 
     @Override
@@ -30,6 +36,21 @@ public class MySearchResultAdapter extends ArrayAdapter<Course> {
         ((TextView) convertView.findViewById(R.id.nameSearchResult)).setText(sr.getName());
         ((TextView) convertView.findViewById(R.id.descrSearchResult)).setText(sr.getDescription());
         convertView.findViewById(R.id.buttonADD).setVisibility(View.VISIBLE);
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "SHORT", Toast.LENGTH_LONG).show();
+            }
+        });
+        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(getContext(), "LONG", Toast.LENGTH_LONG).show();
+                (activity.findViewById(R.id.bottomBar)).setVisibility(View.VISIBLE);
+                return false;
+            }
+        });
         return convertView;
     }
 }
