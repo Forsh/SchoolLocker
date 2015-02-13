@@ -3,6 +3,7 @@ package com.zfakgroup.israel.schoollocker;
 import com.example.mac.myapplication.backend.myApi.model.Course;
 import com.example.mac.myapplication.backend.myApi.model.Group;
 import com.example.mac.myapplication.backend.myApi.model.User;
+import com.zfakgroup.israel.schoollocker.asynctasks.AsyncCallback;
 
 import java.util.HashMap;
 

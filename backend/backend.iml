@@ -10,9 +10,9 @@
       <configuration>
         <option name="HTTP_ADDRESS" value="localhost" />
         <option name="HTTP_PORT" value="8080" />
-        <option name="WAR_DIR" value="C:\Users\AmiD\AndroidStudioProjects\SchoolLocker\backend\build\exploded-app" />
-        <option name="WEB_APP_DIR" value="C:\Users\AmiD\AndroidStudioProjects\SchoolLocker\backend\src\main\webapp" />
-        <option name="APPENGINE_SDKROOT" value="C:\Users\AmiD\.gradle\appengine-sdk\appengine-java-sdk-1.9.14" />
+        <option name="WAR_DIR" value="$MODULE_DIR$/build/exploded-app" />
+        <option name="WEB_APP_DIR" value="$MODULE_DIR$/src/main/webapp" />
+        <option name="APPENGINE_SDKROOT" value="$USER_HOME$/.gradle/appengine-sdk/appengine-java-sdk-1.9.14" />
       </configuration>
     </facet>
     <facet type="java-gradle" name="Java-Gradle">
@@ -39,6 +39,55 @@
     <orderEntry type="library" exported="" name="appengine-endpoints-deps-1.9.14" level="project" />
     <orderEntry type="library" exported="" name="servlet-api-2.5" level="project" />
     <orderEntry type="library" exported="" name="appengine-api-1.0-sdk-1.9.14" level="project" />
+    <orderEntry type="library" exported="" name="appengine-gcs-client-0.4.4" level="project" />
+    <orderEntry type="library" exported="" name="google-http-client-appengine-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-oauth-client-servlet-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="guava-18.0" level="project" />
+    <orderEntry type="library" exported="" name="joda-time-2.7" level="project" />
+    <orderEntry type="library" exported="" name="google-http-client-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="gson-2.1" level="project" />
+    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_jackson_core_2_1_3_jar" level="project" />
+    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_jackson_core_asl_1_9_11_jar" level="project" />
+    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_jsr305_1_3_9_jar" level="project" />
+    <orderEntry type="library" exported="" name="protobuf-java-2.4.1" level="project" />
+    <orderEntry type="library" exported="" name="xpp3-1.1.4c" level="project" />
+    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_google_http_client_jackson_1_19_0_jar" level="project" />
+    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_jackson_core_2_6_0_20150203_053041_15_jar" level="project" />
+    <orderEntry type="library" exported="" name="commons-logging-1.1.1" level="project" />
+    <orderEntry type="library" exported="" name="google-api-client-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-api-client-android-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-api-client-appengine-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-api-client-gson-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-api-client-jackson2-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-api-client-java6-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-api-client-protobuf-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-api-client-servlet-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-api-client-xml-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-http-client-android-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-http-client-gson-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_google_http_client_jackson2_1_18_0_rc_jar" level="project" />
+    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_google_http_client_jackson_1_18_0_rc_jar" level="project" />
+    <orderEntry type="library" exported="" name="google-http-client-jdo-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-http-client-protobuf-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-http-client-xml-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-oauth-client-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-oauth-client-appengine-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-oauth-client-java6-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="google-oauth-client-jetty-1.18.0-rc" level="project" />
+    <orderEntry type="library" exported="" name="httpclient-4.0.1" level="project" />
+    <orderEntry type="library" exported="" name="httpcore-4.0.1" level="project" />
+    <orderEntry type="library" exported="" name="jdo2-api-2.3-eb" level="project" />
+    <orderEntry type="library" exported="" name="jetty-6.1.26" level="project" />
+    <orderEntry type="library" exported="" name="jetty-util-6.1.26" level="project" />
+    <orderEntry type="library" exported="" name="transaction-api-1.1" level="project" />
+    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_google_http_client_jackson2_1_19_0_jar" level="project" />
+    <orderEntry type="library" exported="" name="jackson" level="project" />
+    <orderEntry type="library" exported="" name="google-api-services-storage-v1-rev26-1.19.1" level="project" />
+    <orderEntry type="library" exported="" name="jsr" level="project" />
+    <orderEntry type="library" exported="" name="com.fasterxml.jackson.core" level="project" />
+    <orderEntry type="library" exported="" name="commons-codec-1.10" level="project" />
+    <orderEntry type="library" exported="" name="commons-fileupload-1.3.1" level="project" />
+    <orderEntry type="library" exported="" name="commons-io-2.4" level="project" />
   </component>
 </module>
 

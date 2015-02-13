@@ -8,8 +8,15 @@ import java.util.Date;
  */
 public class Course{
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    private int id;
     private String name;
     private String description;
     private Date begin;
