@@ -20,12 +20,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ListView;
 
 import com.example.mac.myapplication.backend.myApi.model.Group;
+import com.zfakgroup.israel.schoollocker.activities.MainActivity;
+import com.zfakgroup.israel.schoollocker.adapters.MyCourseAdapter;
 import com.zfakgroup.israel.schoollocker.adapters.MyGroupsAdapter;
 import com.zfakgroup.israel.schoollocker.R;
 import com.zfakgroup.israel.schoollocker.asynctasks.AsyncCallback;
+import com.zfakgroup.israel.schoollocker.asynctasks.DeleteCoursesAsync;
 import com.zfakgroup.israel.schoollocker.asynctasks.ListGroupAsync;
 
 import java.util.ArrayList;
@@ -35,12 +39,14 @@ import java.util.List;
  * Simple Fragment used to display some meaningful content for each page in the sample's
  * {@link android.support.v4.view.ViewPager}.
  */
-public class ContentGroupFragment extends Fragment {
+public class ContentGroupFragment extends Fragment implements AsyncCallback {
 
     private static final String KEY_TITLE = "title";
     private static final String KEY_INDICATOR_COLOR = "indicator_color";
     private static final String KEY_DIVIDER_COLOR = "divider_color";
     private Group[] groups;
+    ContentGroupFragment me = this;
+    ListView groupListView;
 
     /**
      * @return a new instance of {@link ContentGroupFragment}, adding the parameters into a bundle and
@@ -54,6 +60,17 @@ public class ContentGroupFragment extends Fragment {
         return fragment;
     }
 
+    public void showGroupContent(int group) {
+        ((MainActivity) getActivity()).fragmentWithFiles(group);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ((MainActivity) getActivity()).contentGroupFragment = this;
+    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -63,16 +80,19 @@ public class ContentGroupFragment extends Fragment {
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        groupListView = (ListView) view.findViewById(R.id.fullscreenList);
 
-        ListGroupAsync listCourseAsync = new ListGroupAsync();
-        listCourseAsync.execute(new AsyncCallback() {
+
+        ListGroupAsync listGroupAsync = new ListGroupAsync();
+        listGroupAsync.execute(new AsyncCallback() {
             @Override
             public void callback(Object result) {
                 if (result instanceof List) {
-                    ArrayList<Group> arrayCourses = (ArrayList<Group>) result;
+                    ArrayList<Group> arrayGroups = (ArrayList<Group>) result;
                     groups = new Group[((ArrayList<Group>) result).size()];
-                    arrayCourses.toArray(groups);
-                    ((ListView) view.findViewById(R.id.fullscreenList)).setAdapter(new MyGroupsAdapter(getActivity(), R.layout.search_item, groups));
+                    arrayGroups.toArray(groups);
+                   (groupListView).setAdapter(new MyGroupsAdapter(R.layout.search_item, groups, getActivity(), me));
+                //((ListView) view.findViewById(R.id.fullscreenList)).setAdapter(new MyGroupsAdapter(getActivity(), R.layout.search_item, groups));
                 }
             }
         });
@@ -93,5 +113,12 @@ public class ContentGroupFragment extends Fragment {
 //            dividerColorView.setText("Divider: #" + Integer.toHexString(dividerColor));
 //            dividerColorView.setTextColor(dividerColor);
 //        }
+    }
+
+
+
+    @Override
+    public void callback(Object result) {
+
     }
 }

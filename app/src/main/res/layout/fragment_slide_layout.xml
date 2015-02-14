@@ -32,18 +32,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/deleteBottomButton"
-            android:text="Delete"/>
+            android:text="Delete"
+            />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Download"/>
+            android:text="Download"
+            />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Share"/>
+            android:text="Share"
+            />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Refresh"/>
+            android:text="Refresh"
+            />
     </LinearLayout>
 </LinearLayout>

@@ -27,8 +27,10 @@ import android.widget.Toast;
 
 import com.zfakgroup.israel.schoollocker.R;
 import com.zfakgroup.israel.schoollocker.myfragments.ContentCourseFragment;
+import com.zfakgroup.israel.schoollocker.myfragments.ContentGroupFragment;
 import com.zfakgroup.israel.schoollocker.myfragments.FragmentFiles;
 import com.zfakgroup.israel.schoollocker.myfragments.FragmentNewCourse;
+import com.zfakgroup.israel.schoollocker.myfragments.FragmentNewGroup;
 import com.zfakgroup.israel.schoollocker.myfragments.FragmentSearch;
 import com.zfakgroup.israel.schoollocker.myfragments.FragmentSlidingGroupsCourses;
 
@@ -67,6 +69,8 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
     // МЕГА_КОСТЫЛЬ
     public ContentCourseFragment contentCourseFragment;
+    public ContentGroupFragment contentGroupFragment;
+
     public MainActivity() {
     }
 
@@ -203,6 +207,13 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
                 getSupportFragmentManager().beginTransaction()
 
                         .replace(R.id.fragment_container, new FragmentNewCourse())
+                        .addToBackStack("")
+                        .commit();
+                break;
+            case 2:
+                getSupportFragmentManager().beginTransaction()
+
+                        .replace(R.id.fragment_container, new FragmentNewGroup())
                         .addToBackStack("")
                         .commit();
                 break;

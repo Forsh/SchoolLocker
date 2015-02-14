@@ -46,13 +46,13 @@
     <orderEntry type="library" exported="" name="joda-time-2.7" level="project" />
     <orderEntry type="library" exported="" name="google-http-client-1.18.0-rc" level="project" />
     <orderEntry type="library" exported="" name="gson-2.1" level="project" />
-    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_jackson_core_2_1_3_jar" level="project" />
-    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_jackson_core_asl_1_9_11_jar" level="project" />
-    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_jsr305_1_3_9_jar" level="project" />
+    <orderEntry type="library" exported="" name="_Users_Sasha_AndroidStudioProjects_SchoolLocker_backend_libs_jackson_core_2_1_3_jar" level="project" />
+    <orderEntry type="library" exported="" name="_Users_Sasha_AndroidStudioProjects_SchoolLocker_backend_libs_jackson_core_asl_1_9_11_jar" level="project" />
+    <orderEntry type="library" exported="" name="_Users_Sasha_AndroidStudioProjects_SchoolLocker_backend_libs_jsr305_1_3_9_jar" level="project" />
     <orderEntry type="library" exported="" name="protobuf-java-2.4.1" level="project" />
     <orderEntry type="library" exported="" name="xpp3-1.1.4c" level="project" />
-    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_google_http_client_jackson_1_19_0_jar" level="project" />
-    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_jackson_core_2_6_0_20150203_053041_15_jar" level="project" />
+    <orderEntry type="library" exported="" name="_Users_Sasha_AndroidStudioProjects_SchoolLocker_backend_libs_google_http_client_jackson_1_19_0_jar" level="project" />
+    <orderEntry type="library" exported="" name="_Users_Sasha_AndroidStudioProjects_SchoolLocker_backend_libs_jackson_core_2_6_0_20150203_053041_15_jar" level="project" />
     <orderEntry type="library" exported="" name="commons-logging-1.1.1" level="project" />
     <orderEntry type="library" exported="" name="google-api-client-1.18.0-rc" level="project" />
     <orderEntry type="library" exported="" name="google-api-client-android-1.18.0-rc" level="project" />
@@ -65,8 +65,8 @@
     <orderEntry type="library" exported="" name="google-api-client-xml-1.18.0-rc" level="project" />
     <orderEntry type="library" exported="" name="google-http-client-android-1.18.0-rc" level="project" />
     <orderEntry type="library" exported="" name="google-http-client-gson-1.18.0-rc" level="project" />
-    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_google_http_client_jackson2_1_18_0_rc_jar" level="project" />
-    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_google_http_client_jackson_1_18_0_rc_jar" level="project" />
+    <orderEntry type="library" exported="" name="_Users_Sasha_AndroidStudioProjects_SchoolLocker_backend_libs_google_http_client_jackson2_1_18_0_rc_jar" level="project" />
+    <orderEntry type="library" exported="" name="_Users_Sasha_AndroidStudioProjects_SchoolLocker_backend_libs_google_http_client_jackson_1_18_0_rc_jar" level="project" />
     <orderEntry type="library" exported="" name="google-http-client-jdo-1.18.0-rc" level="project" />
     <orderEntry type="library" exported="" name="google-http-client-protobuf-1.18.0-rc" level="project" />
     <orderEntry type="library" exported="" name="google-http-client-xml-1.18.0-rc" level="project" />
@@ -80,7 +80,7 @@
     <orderEntry type="library" exported="" name="jetty-6.1.26" level="project" />
     <orderEntry type="library" exported="" name="jetty-util-6.1.26" level="project" />
     <orderEntry type="library" exported="" name="transaction-api-1.1" level="project" />
-    <orderEntry type="library" exported="" name="_Users_mac_SchoolLocker_backend_libs_google_http_client_jackson2_1_19_0_jar" level="project" />
+    <orderEntry type="library" exported="" name="_Users_Sasha_AndroidStudioProjects_SchoolLocker_backend_libs_google_http_client_jackson2_1_19_0_jar" level="project" />
     <orderEntry type="library" exported="" name="jackson" level="project" />
     <orderEntry type="library" exported="" name="google-api-services-storage-v1-rev26-1.19.1" level="project" />
     <orderEntry type="library" exported="" name="jsr" level="project" />
