@@ -49,13 +49,7 @@ import javax.inject.Named;
 public class MyEndpoint {
     private static final String GET_GROUP_QUERY = "SELECT Name, Description FROM GROUPS WHERE Id = ";
     private static final String LIST_GROUPS_QUERY =
-            "SELECT * FROM GROUPS " +
-                    "JOIN " +
-                    "USERSINGROUPS " +
-                    "ON " +
-                    "USERSINGROUPS.GroupId = GROUPS.Id " +
-                    "having " +
-                    "USERSINGROUPS.UserId =";
+            "SELECT * FROM GROUPS " ;
     private static final String GET_COURSE_QUERY = "SELECT Name, Description FROM COURSES WHERE Id = ";
     private static final String LIST_COURSES_QUERY =
             "SELECT * FROM COURSES "; /*+
@@ -118,7 +112,15 @@ public class MyEndpoint {
     @ApiMethod(name = "listGroups", path = "listGroups")
     public List<Group> listGroups(@Named("id") String id) {
         if (id == "") {
-            id = "USERSINGROUPS.UserId";
+            //id = "USERSINGROUPS.UserId";
+        }
+        else {
+            id = "JOIN " +
+                    "USERSINGROUPS " +
+                    "ON " +
+                    "USERSINGROUPS.GroupId = GROUPS.Id " +
+                    "having " +
+                    "USERSINGROUPS.UserId =" + id;
         }
         ArrayList<Group> groupArrayList = new ArrayList<Group>();
         try {
@@ -309,6 +311,70 @@ public class MyEndpoint {
         }
         return new Course();
     }
+
+
+
+
+    @ApiMethod(name = "createGroup", path = "createGroup")//, httpMethod = "POST")
+    public Group createGroup(Group group) {
+
+        String url;
+        if (SystemProperty.environment.value() ==
+                SystemProperty.Environment.Value.Production) {
+            // Connecting from App Engine.
+            // Load the class that provides the "jdbc:google:mysql://"
+            // prefix.
+            try {
+                Class.forName("com.mysql.jdbc.GoogleDriver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            url =
+                    "jdbc:google:mysql://golden-tempest-803:forshtata/MyDatabase?user=root";
+        } else {
+            // Connecting from an external network.
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            url = "jdbc:mysql://173.194.254.146:3306?user=root";
+        }
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //INSERT INTO COURSES(Name, Description) VALUES("Nuclear physics", "Harvard University course leads you through newest nuclear phisics theories");
+        String query = "INSERT INTO GROUPS(Name, Description) VALUES( ? , ? )";
+        if (conn != null) {
+            try {
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setString(1, group.getName());
+                ps.setString(2, group.getDescription());
+                int success = 2;
+                success = ps.executeUpdate();
+                if (success == 1) {
+                    Group group1 = new Group();
+                    group1.setDescription("Success!");
+                    return group1;
+                } else if (success == 0) {
+                    Group group1 = new Group();
+                    group1.setDescription("Failed!");
+                    return group1;
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return new Group();
+    }
+
+
+
 
     @ApiMethod(name = "login", path = "login")
     public User login(@Named("email") String email, @Named("password") String password) {

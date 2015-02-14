@@ -50,6 +50,7 @@ public class MyCourseAdapter extends ArrayAdapter<Course> {
             }
         });
 
+
         convertView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
