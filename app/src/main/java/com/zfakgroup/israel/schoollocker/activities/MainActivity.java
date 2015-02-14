@@ -274,6 +274,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     public interface UploadCallback{
         public void onUploadComplete();
     }
+
     public int uploadFile(String sourceFileUri, final UploadCallback callback) {
 
 

@@ -451,6 +451,65 @@ public class MyEndpoint {
     }
 
 
-    //@ApiMethod(name = "createContent", path = "createContent")//, httpMethod = "POST")
+    @ApiMethod(name = "createUser", path = "createUser")//, httpMethod = "POST")
+    public User createUser(User user) {
+
+        String url;
+        if (SystemProperty.environment.value() ==
+                SystemProperty.Environment.Value.Production) {
+            // Connecting from App Engine.
+            // Load the class that provides the "jdbc:google:mysql://"
+            // prefix.
+            try {
+                Class.forName("com.mysql.jdbc.GoogleDriver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            url =
+                    "jdbc:google:mysql://golden-tempest-803:forshtata/MyDatabase?user=root";
+        } else {
+            // Connecting from an external network.
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            url = "jdbc:mysql://173.194.254.146:3306?user=root";
+        }
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //INSERT INTO COURSES(Name, Description) VALUES("Nuclear physics", "Harvard University course leads you through newest nuclear phisics theories");
+        String query = "INSERT INTO COURSES(Name, Description) VALUES( ? , ? )";
+        if (conn != null) {
+            try {
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setString(1, user.getName());
+
+                //ps.setString(2, course.getDescription());
+
+                int success = 2;
+                success = ps.executeUpdate();
+//                if (success == 1) {
+//                    Course course1 = new Course();
+//                    course1.setDescription("Success!");
+//                    return course1;
+//                } else if (success == 0) {
+//                    Course course1 = new Course();
+//                    course1.setDescription("Failed!");
+//                    return course1;
+//                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return new User();
+    }
+
 
 }
