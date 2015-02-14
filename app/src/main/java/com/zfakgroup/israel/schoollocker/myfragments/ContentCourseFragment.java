@@ -39,7 +39,7 @@ import java.util.List;
  * Simple Fragment used to display some meaningful content for each page in the sample's
  * {@link android.support.v4.view.ViewPager}.
  */
-public class ContentCourseFragment extends Fragment implements AsyncCallback{
+public class ContentCourseFragment extends Fragment implements AsyncCallback {
 
     private static final String KEY_TITLE = "title";
     private static final String KEY_INDICATOR_COLOR = "indicator_color";
@@ -47,6 +47,7 @@ public class ContentCourseFragment extends Fragment implements AsyncCallback{
     private Course[] courses;
     ContentCourseFragment me = this;
     ListView courseListView;
+
     /**
      * @return a new instance of {@link ContentCourseFragment}, adding the parameters into a bundle and
      * setting them as arguments.
@@ -59,14 +60,14 @@ public class ContentCourseFragment extends Fragment implements AsyncCallback{
         return fragment;
     }
 
-    public void showCourseContent(int course){
-        ((MainActivity)getActivity()).fragmentWithFiles(course);
+    public void showCourseContent(int course) {
+        ((MainActivity) getActivity()).fragmentWithFiles(course);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        ((MainActivity) getActivity()).contentCourseFragment = this;
     }
 
     @Override
@@ -94,20 +95,17 @@ public class ContentCourseFragment extends Fragment implements AsyncCallback{
         });
     }
 
-    public void onClick(View view) {
-        switch (view.getId()){
-            case (R.id.deleteBottomButton):
-                ArrayList<Integer> indexToDelete = new ArrayList<>();
-                for(int pos = 0; pos < courseListView.getChildCount(); pos++) {
-                    if (((CheckBox) courseListView.getChildAt(pos).findViewById(R.id.checkBoxSearchItem)).isChecked()) {
-                        indexToDelete.add(pos);
-                    }
 
-                }
-                DeleteCoursesAsync dca = new DeleteCoursesAsync();
-                dca.execute(this);
-            break;
+    public void deleteSelected() {
+        ArrayList<Integer> idToDelete = new ArrayList<>();
+        for (int pos = 0; pos < courseListView.getChildCount(); pos++) {
+            if (((CheckBox) courseListView.getChildAt(pos).findViewById(R.id.checkBoxSearchItem)).isChecked()) {
+                idToDelete.add(courses[pos].getId());
+            }
+
         }
+        DeleteCoursesAsync dca = new DeleteCoursesAsync();
+        dca.execute(this, idToDelete);
     }
 
     @Override

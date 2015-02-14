@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zfakgroup.israel.schoollocker.R;
+import com.zfakgroup.israel.schoollocker.myfragments.ContentCourseFragment;
 import com.zfakgroup.israel.schoollocker.myfragments.FragmentFiles;
 import com.zfakgroup.israel.schoollocker.myfragments.FragmentNewCourse;
 import com.zfakgroup.israel.schoollocker.myfragments.FragmentSearch;
@@ -37,9 +38,6 @@ import java.io.FileInputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import ar.com.daidalos.afiledialog.*;
-
 
 
 public class MainActivity extends ActionBarActivity implements AdapterView.OnItemClickListener {
@@ -67,6 +65,8 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     ProgressDialog dialog = null;
     private String upLoadServerUri = "https://golden-tempest-803.appspot.com/_file/";//"http://10.0.2.2:8080/_file/";
 
+    // МЕГА_КОСТЫЛЬ
+    public ContentCourseFragment contentCourseFragment;
     public MainActivity() {
     }
 
@@ -96,21 +96,12 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0) {
             SessionId = resultCode;
         }
         final String filePath;
-        if (requestCode == 10){
-            File file = (File) data.getExtras().get(FileChooserActivity.OUTPUT_FILE_OBJECT);
-            filePath = file.getAbsolutePath();
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    uploadFile(filePath);
-                }
-            }).start();
-            Toast.makeText(getApplicationContext(), filePath, Toast.LENGTH_LONG).show();
-        }
+
     }
 
 
@@ -278,38 +269,13 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
                 .replace(R.id.fragment_container, toAdd)
                 .addToBackStack("")
                 .commit();
-        MenuItem.OnMenuItemClickListener addListener = new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                Intent intent = new Intent(getApplicationContext(), FileChooserActivity.class);
-                startActivityForResult(intent, 10);
-                Toast.makeText(getApplicationContext(), "Adding selected", Toast.LENGTH_LONG).show();
-                return true;
-            }
-        };
-        theMenu.add("Add").setOnMenuItemClickListener(addListener)
-                //.setActionView(R.layout.menu_add)
-                .setIcon(android.R.drawable.ic_menu_upload)
-                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-
-
-        MenuItem.OnMenuItemClickListener downloadListener = new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-
-                //Toast.makeText(getApplicationContext(), "Adding selected", Toast.LENGTH_LONG).show();
-
-                return true;
-            }
-        };
-
-        theMenu.add("Download").setOnMenuItemClickListener(downloadListener)
-                //.setActionView(R.layout.menu_add)
-                .setIcon(android.R.drawable.stat_sys_download)
-                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
     }
 
-    public int uploadFile(String sourceFileUri) {
+    public interface UploadCallback{
+        public void onUploadComplete();
+    }
+    public int uploadFile(String sourceFileUri, final UploadCallback callback) {
+
 
         File f = new File(sourceFileUri);
 
@@ -402,7 +368,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
                     runOnUiThread(new Runnable() {
                         public void run() {
-
+                            callback.onUploadComplete();
                             String msg = "File Upload Completed.\n\n See uploaded file here : \n\n"
                                     +" http://www.androidexample.com/media/uploads/"
                                     +uploadFileName;

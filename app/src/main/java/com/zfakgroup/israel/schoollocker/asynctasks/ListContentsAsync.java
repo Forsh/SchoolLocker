@@ -14,26 +14,26 @@ public class ListContentsAsync extends EndpointClassAsync {
     protected Object doInBackground(Object... params) {
         super.init((AsyncCallback) params[0]);
         String request =" ";
-        if(params.length >=3  && params[1].toString() == "user" )
-            request+=
-
-                    "JOIN " +
-                            "USERSINCOURSES " +
-                            "ON " +
-                            "USERSINCOURSES.CourseId = COURSES.Id " +
-                            "having " +
-                            "USERSINCOURSES.UserId = "+ params[2].toString();
-        if(params.length >=3 && params[1].toString() =="univ" )
-            request+=
-
-                    "JOIN " +
-                            "COURSESINUNIVERSITIES " +
-                            "ON " +
-                            "COURSESINUNIVERSITIES.CourseId = COURSES.Id" +
-                            " having " +
-                            "COURSESINUNIVERSITIES.UniversityId = "+ params[2].toString();
+//        if(params.length >=3  && params[1].toString() == "user" )
+//            request+=
+//
+//                    "JOIN " +
+//                            "USERSINCOURSES " +
+//                            "ON " +
+//                            "USERSINCOURSES.CourseId = COURSES.Id " +
+//                            "having " +
+//                            "USERSINCOURSES.UserId = "+ params[2].toString();
+//        if(params.length >=3 && params[1].toString() =="univ" )
+//            request+=
+//
+//                    "JOIN " +
+//                            "COURSESINUNIVERSITIES " +
+//                            "ON " +
+//                            "COURSESINUNIVERSITIES.CourseId = COURSES.Id" +
+//                            " having " +
+//                            "COURSESINUNIVERSITIES.UniversityId = "+ params[2].toString();
         try {
-            return super.myApiService.listCourses(request).execute().getItems();
+            return super.myApiService.listContents().execute().getItems();
         } catch (IOException e) {
             return new ArrayList<Country>();
         }

@@ -1,5 +1,6 @@
 package com.example.mac.myapplication.backend;
 
+import com.google.appengine.api.utils.SystemProperty;
 import com.google.appengine.tools.cloudstorage.GcsFileOptions;
 import com.google.appengine.tools.cloudstorage.GcsFilename;
 import com.google.appengine.tools.cloudstorage.GcsOutputChannel;
@@ -15,6 +16,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.channels.Channels;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -87,14 +92,75 @@ public class MyServlet extends HttpServlet {
                             gcsService.createOrReplace(gcsfileName, options);
 
                     copy(stream, Channels.newOutputStream(outputChannel));
-
+                    Content created = new Content(0, sname, "https://http://storage.googleapis.com/forshtatcloudstoragebucket/"+sname, 0);
+                    createContent(created);
                     res.sendRedirect("/");
                 }
             }
         } catch (Exception ex) {
             throw new ServletException(ex);
         }
+
     }
+
+    public void createContent(Content course) {
+
+        String url;
+        if (SystemProperty.environment.value() ==
+                SystemProperty.Environment.Value.Production) {
+            // Connecting from App Engine.
+            // Load the class that provides the "jdbc:google:mysql://"
+            // prefix.
+            try {
+                Class.forName("com.mysql.jdbc.GoogleDriver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            url =
+                    "jdbc:google:mysql://golden-tempest-803:forshtata/MyDatabase?user=root";
+        } else {
+            // Connecting from an external network.
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            url = "jdbc:mysql://173.194.254.146:3306?user=root";
+        }
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //INSERT INTO COURSES(Name, Description) VALUES("Nuclear physics", "Harvard University course leads you through newest nuclear phisics theories");
+        String query = "INSERT INTO CONTENTS(Name, URL, FileFolderLink) VALUES( ? , ? , ?)";
+        if (conn != null) {
+            try {
+                PreparedStatement ps = conn.prepareStatement(query);
+                ps.setString(1, course.getName());
+                ps.setString(2, course.getURL());
+                ps.setInt(3, course.getType());
+                int success = 2;
+                success = ps.executeUpdate();
+//                if (success == 1) {
+//                    Course course1 = new Course();
+//                    course1.setDescription("Success!");
+//                    return;// course1;
+//                } else if (success == 0) {
+//                    Course course1 = new Course();
+//                    course1.setDescription("Failed!");
+//                    return;// course1;
+//                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return;// new Course();
+    }
+
 
     private void copy(InputStream input, OutputStream output) throws IOException {
         try {

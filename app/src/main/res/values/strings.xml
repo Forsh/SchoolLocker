@@ -54,4 +54,8 @@
     <string name="description">Descriptions: </string>
     <string name="ending_date">Ending date: </string>
     <string name="create_course">Create course</string>
+    <string name="delete">Delete</string>
+    <string name="download">Download</string>
+    <string name="share">Share</string>
+    <string name="refresh">Refresh</string>
 </resources>

@@ -426,7 +426,6 @@ public class MyEndpoint {
 
         for (int course : courses) {
 
-            //INSERT INTO COURSES(Name, Description) VALUES("Nuclear physics", "Harvard University course leads you through newest nuclear phisics theories");
             String query = DELETE_COURSE_BY_ID;
             if (conn != null) {
                 try {
@@ -434,15 +433,15 @@ public class MyEndpoint {
                     ps.setInt(1, course);
                     int success = 2;
                     success = ps.executeUpdate();
-                    if (success == 1) {
-                        Course course1 = new Course();
-                        course1.setDescription("Success!");
-                        return course1;
-                    } else if (success == 0) {
-                        Course course1 = new Course();
-                        course1.setDescription("Failed!");
-                        return course1;
-                    }
+//                    if (success == 1) {
+//                        Course course1 = new Course();
+//                        course1.setDescription("Success!");
+//                        //return course1;
+//                    } else if (success == 0) {
+//                        Course course1 = new Course();
+//                        course1.setDescription("Failed!");
+//                        //return course1;
+//                    }
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -450,4 +449,8 @@ public class MyEndpoint {
         }
         return new Course();
     }
+
+
+    //@ApiMethod(name = "createContent", path = "createContent")//, httpMethod = "POST")
+
 }

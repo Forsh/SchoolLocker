@@ -14,6 +14,7 @@ import com.example.mac.myapplication.backend.myApi.model.Course;
 import com.example.mac.myapplication.backend.myApi.model.Group;
 import com.zfakgroup.israel.schoollocker.R;
 import com.zfakgroup.israel.schoollocker.SlidingTabLayout;
+import com.zfakgroup.israel.schoollocker.activities.MainActivity;
 import com.zfakgroup.israel.schoollocker.asynctasks.AsyncCallback;
 import com.zfakgroup.israel.schoollocker.asynctasks.ListGroupAsync;
 
@@ -54,12 +55,16 @@ public class FragmentSlidingGroupsCourses extends Fragment{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //(view.findViewById(R.id.deleteBottomButton)).setOnClickListener(BLYAD!!!);
-
+        final MainActivity mainActivity = (MainActivity) getActivity();
+        (view.findViewById(R.id.deleteBottomButton)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainActivity.contentCourseFragment.deleteSelected();
+            }
+        });
 
 
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
-
         FragmentPagerAdapter fpa = new SampleFragmentPagerAdapter(getChildFragmentManager());
 
         viewPager.setAdapter(fpa);

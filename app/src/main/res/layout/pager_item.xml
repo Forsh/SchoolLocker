@@ -8,9 +8,37 @@
 
     <ListView
     android:layout_width="wrap_content"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     android:id="@+id/fullscreenList"
     android:longClickable="true"
-    android:choiceMode="multipleChoice" />
+    android:choiceMode="multipleChoice"
+        android:layout_weight="1" />
+    <!--<LinearLayout-->
+        <!--android:id="@+id/bottomBarFile"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_weight="10"-->
+        <!--android:visibility="gone">-->
+
+
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/deleteBottomButton"-->
+            <!--android:text="@string/delete"/>-->
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/download"/>-->
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/share"/>-->
+        <!--<Button-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/refresh"/>-->
+    <!--</LinearLayout>-->
 
 </LinearLayout>
