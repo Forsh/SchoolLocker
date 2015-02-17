@@ -30,6 +30,7 @@ import com.zfakgroup.israel.schoollocker.adapters.MyGroupsAdapter;
 import com.zfakgroup.israel.schoollocker.R;
 import com.zfakgroup.israel.schoollocker.asynctasks.AsyncCallback;
 import com.zfakgroup.israel.schoollocker.asynctasks.DeleteCoursesAsync;
+import com.zfakgroup.israel.schoollocker.asynctasks.DeleteGroupsAsync;
 import com.zfakgroup.israel.schoollocker.asynctasks.ListGroupAsync;
 
 import java.util.ArrayList;
@@ -97,7 +98,7 @@ public class ContentGroupFragment extends Fragment implements AsyncCallback {
             }
         });
 
-        Bundle args = getArguments();
+       // Bundle args = getArguments();
 //
 //        if (args != null) {
 //            TextView title = (TextView) view.findViewById(R.id.item_title);
@@ -115,6 +116,16 @@ public class ContentGroupFragment extends Fragment implements AsyncCallback {
 //        }
     }
 
+    public void deleteSelected() {
+        ArrayList<Integer> idToDelete = new ArrayList<>();
+        for (int pos = 0; pos < groupListView.getChildCount(); pos++) {
+            if (((CheckBox) groupListView.getChildAt(pos).findViewById(R.id.checkBoxSearchItem)).isChecked()) {
+                idToDelete.add(groups[pos].getId());
+            }
+        }
+        DeleteGroupsAsync dga = new DeleteGroupsAsync();
+        dga.execute(this, idToDelete);
+    }
 
 
     @Override

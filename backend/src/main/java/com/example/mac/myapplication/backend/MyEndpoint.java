@@ -65,6 +65,7 @@ public class MyEndpoint {
     private static final String LIST_CONTENTS_QUERY = "SELECT * FROM CONTENTS";
     private static final String GET_USER = "SELECT * FROM USERS";
     private String DELETE_COURSE_BY_ID = "delete from COURSES where Id = ? ";
+    private String DELETE_GROUP_BY_ID = "delete from GROUPS where Id = ? ";
 
     //region A simple endpoint method that takes a name and says Hi back
 /*
@@ -131,6 +132,9 @@ public class MyEndpoint {
                         resultSet.getString("Name"));
                 found.setDescription(
                         resultSet.getString("Description")
+                );
+                found.setId(
+                        resultSet.getInt("Id")
                 );
                 groupArrayList.add(found);
             }
@@ -514,6 +518,66 @@ public class MyEndpoint {
             }
         }
         return new Course();
+    }
+
+
+    @ApiMethod(name = "deleteGroup", path = "deletegroup")
+    public Group deleteGroups(@Named("userid") int userID, @Named("groups") int[] groups) {
+
+        String url;
+        if (SystemProperty.environment.value() ==
+                SystemProperty.Environment.Value.Production) {
+            // Connecting from App Engine.
+            // Load the class that provides the "jdbc:google:mysql://"
+            // prefix.
+            try {
+                Class.forName("com.mysql.jdbc.GoogleDriver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            url =
+                    "jdbc:google:mysql://golden-tempest-803:forshtata/MyDatabase?user=root";
+        } else {
+            // Connecting from an external network.
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            url = "jdbc:mysql://173.194.254.146:3306?user=root";
+        }
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        for (int group : groups) {
+
+            String query = DELETE_GROUP_BY_ID;
+            if (conn != null) {
+                try {
+                    PreparedStatement ps = conn.prepareStatement(query);
+                    ps.setInt(1, group);
+                    int success = 2;
+                    success = ps.executeUpdate();
+//                    if (success == 1) {
+//                        Course course1 = new Course();
+//                        course1.setDescription("Success!");
+//                        //return course1;
+//                    } else if (success == 0) {
+//                        Course course1 = new Course();
+//                        course1.setDescription("Failed!");
+//                        //return course1;
+//                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return new Group();
     }
 
 
