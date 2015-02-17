@@ -48,6 +48,12 @@ public class FragmentNewGroup extends Fragment {
             group.setDescription(def);
             groupAsync.execute(this, group);
             //}
+
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    //.remove(fragment)
+                    .replace(R.id.fragment_container, new FragmentSlidingGroupsCourses())
+                    .addToBackStack("")
+                    .commit();
         }
         @Override
         public void callback(Object result) {

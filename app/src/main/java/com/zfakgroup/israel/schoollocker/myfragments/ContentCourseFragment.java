@@ -79,7 +79,11 @@ public class ContentCourseFragment extends Fragment implements AsyncCallback {
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        courseListView = (ListView) view.findViewById(R.id.fullscreenList);
+        fillListViewCourse();
+    }
+
+    public void fillListViewCourse () {
+        courseListView = (ListView) getView().findViewById(R.id.fullscreenList);
 
         ListCourseAsync listCourseAsync = new ListCourseAsync();
         listCourseAsync.execute(new AsyncCallback() {
@@ -95,7 +99,6 @@ public class ContentCourseFragment extends Fragment implements AsyncCallback {
         });
     }
 
-
     public void deleteSelected() {
         ArrayList<Integer> idToDelete = new ArrayList<>();
         for (int pos = 0; pos < courseListView.getChildCount(); pos++) {
@@ -106,6 +109,7 @@ public class ContentCourseFragment extends Fragment implements AsyncCallback {
         }
         DeleteCoursesAsync dca = new DeleteCoursesAsync();
         dca.execute(this, idToDelete);
+        fillListViewCourse();
     }
 
     @Override
