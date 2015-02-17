@@ -3,11 +3,9 @@
 
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <gradient android:startColor="#1b00b8ae"
-                android:centerColor="#ae00b8ae" android:endColor="#ff00b8ae"
-                android:angle="270" android:centerX="0.5" android:centerY="0.5" />
-            <stroke android:width="5dp" android:color="#ff044e3d" />
-            <corners android:radius="7dp" />
+
+            <stroke android:width="2dp" android:color="#ffbfc4c6" />
+            <corners android:radius="2dp" />
             <padding android:left="10dp" android:top="6dp" android:right="10dp"
                 android:bottom="6dp" />
         </shape>

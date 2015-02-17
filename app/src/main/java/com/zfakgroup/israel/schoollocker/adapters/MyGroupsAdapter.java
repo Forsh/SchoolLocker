@@ -42,7 +42,7 @@ public class MyGroupsAdapter extends ArrayAdapter<Group> {
 
         ((TextView) convertView.findViewById(R.id.nameSearchResult)).setText(sr.getName());
         ((TextView) convertView.findViewById(R.id.descrSearchResult)).setText(sr.getDescription());
-        convertView.findViewById(R.id.buttonADD).setVisibility(View.VISIBLE);
+        convertView.findViewById(R.id.checkBoxSearchItem).setVisibility(View.VISIBLE);
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

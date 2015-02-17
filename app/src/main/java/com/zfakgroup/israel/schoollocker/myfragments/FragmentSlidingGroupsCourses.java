@@ -60,8 +60,11 @@ public class FragmentSlidingGroupsCourses extends Fragment{
             @Override
             public void onClick(View v) {
                 mainActivity.contentCourseFragment.deleteSelected();
+               mainActivity.contentGroupFragment.deleteSelected();
             }
         });
+
+
 
 
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);

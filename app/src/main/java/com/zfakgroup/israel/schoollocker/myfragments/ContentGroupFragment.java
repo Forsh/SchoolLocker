@@ -30,6 +30,7 @@ import com.zfakgroup.israel.schoollocker.adapters.MyGroupsAdapter;
 import com.zfakgroup.israel.schoollocker.R;
 import com.zfakgroup.israel.schoollocker.asynctasks.AsyncCallback;
 import com.zfakgroup.israel.schoollocker.asynctasks.DeleteCoursesAsync;
+import com.zfakgroup.israel.schoollocker.asynctasks.DeleteGroupsAsync;
 import com.zfakgroup.israel.schoollocker.asynctasks.ListGroupAsync;
 
 import java.util.ArrayList;
@@ -80,24 +81,9 @@ public class ContentGroupFragment extends Fragment implements AsyncCallback {
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        groupListView = (ListView) view.findViewById(R.id.fullscreenList);
+        fillListViewGroup();
 
-
-        ListGroupAsync listGroupAsync = new ListGroupAsync();
-        listGroupAsync.execute(new AsyncCallback() {
-            @Override
-            public void callback(Object result) {
-                if (result instanceof List) {
-                    ArrayList<Group> arrayGroups = (ArrayList<Group>) result;
-                    groups = new Group[((ArrayList<Group>) result).size()];
-                    arrayGroups.toArray(groups);
-                   (groupListView).setAdapter(new MyGroupsAdapter(R.layout.search_item, groups, getActivity(), me));
-                //((ListView) view.findViewById(R.id.fullscreenList)).setAdapter(new MyGroupsAdapter(getActivity(), R.layout.search_item, groups));
-                }
-            }
-        });
-
-        Bundle args = getArguments();
+       // Bundle args = getArguments();
 //
 //        if (args != null) {
 //            TextView title = (TextView) view.findViewById(R.id.item_title);
@@ -115,6 +101,36 @@ public class ContentGroupFragment extends Fragment implements AsyncCallback {
 //        }
     }
 
+    public void fillListViewGroup() {
+        groupListView = (ListView) getView().findViewById(R.id.fullscreenList);
+
+
+        ListGroupAsync listGroupAsync = new ListGroupAsync();
+        listGroupAsync.execute(new AsyncCallback() {
+            @Override
+            public void callback(Object result) {
+                if (result instanceof List) {
+                    ArrayList<Group> arrayGroups = (ArrayList<Group>) result;
+                    groups = new Group[((ArrayList<Group>) result).size()];
+                    arrayGroups.toArray(groups);
+                    (groupListView).setAdapter(new MyGroupsAdapter(R.layout.search_item, groups, getActivity(), me));
+                    //((ListView) view.findViewById(R.id.fullscreenList)).setAdapter(new MyGroupsAdapter(getActivity(), R.layout.search_item, groups));
+                }
+            }
+        });
+    }
+
+    public void deleteSelected() {
+        ArrayList<Integer> idToDelete = new ArrayList<>();
+        for (int pos = 0; pos < groupListView.getChildCount(); pos++) {
+            if (((CheckBox) groupListView.getChildAt(pos).findViewById(R.id.checkBoxSearchItem)).isChecked()) {
+                idToDelete.add(groups[pos].getId());
+            }
+        }
+        DeleteGroupsAsync dga = new DeleteGroupsAsync();
+        dga.execute(this, idToDelete);
+        fillListViewGroup();
+    }
 
 
     @Override

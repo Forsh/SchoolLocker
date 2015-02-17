@@ -47,6 +47,11 @@ public class FragmentNewCourse extends Fragment  {
             course.setDescription(def);
             courseAsync.execute(this, course);
             //}
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    //.remove(fragment)
+                    .replace(R.id.fragment_container, new FragmentSlidingGroupsCourses())
+                    .addToBackStack("")
+                    .commit();
         }
         @Override
         public void callback(Object result) {

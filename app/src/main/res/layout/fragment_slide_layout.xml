@@ -23,31 +23,43 @@
     <LinearLayout
         android:id="@+id/bottomBar"
         android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:layout_gravity="center_horizontal">
 
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:id="@+id/deleteBottomButton"
             android:text="Delete"
-            />
+            android:textColor="#FFFFFF"
+            android:background="@drawable/buttonshape"
+            android:layout_marginRight="3dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"/>
+
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:text="Download"
-            />
+            android:id="@+id/downloadButton"
+            android:background="@drawable/buttonshape"
+            android:layout_marginRight="3dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="5dp"/>
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:text="Share"
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Refresh"
-            />
+            android:background="@drawable/buttonshape"
+            android:layout_marginRight="3dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="5dp"/>
+
+
     </LinearLayout>
 </LinearLayout>
