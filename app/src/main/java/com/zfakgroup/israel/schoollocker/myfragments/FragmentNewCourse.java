@@ -37,7 +37,7 @@ public class FragmentNewCourse extends Fragment  {
     class myOnClickListener implements View.OnClickListener, AsyncCallback {
         @Override
         public void onClick(View v) {
-            Toast.makeText(getActivity(), "Course created", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), "Course created", Toast.LENGTH_LONG).show();
             CreateCourseAsync courseAsync = new CreateCourseAsync();
             Course course = new Course();
             String name = ((EditText) getView().findViewById(R.id.inputName)).getText().toString();
@@ -55,7 +55,7 @@ public class FragmentNewCourse extends Fragment  {
         }
         @Override
         public void callback(Object result) {
-            Toast.makeText(getActivity(), "Course created", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), "Course created", Toast.LENGTH_LONG).show();
         }
 
     };

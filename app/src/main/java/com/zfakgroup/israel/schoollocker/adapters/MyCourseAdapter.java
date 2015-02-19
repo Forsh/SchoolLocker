@@ -44,7 +44,7 @@ public class MyCourseAdapter extends ArrayAdapter<Course> {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "FUUUUUU", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(), "FUUUUUU", Toast.LENGTH_LONG).show();
                 if (courseFragment != null)
                     courseFragment.showCourseContent(position);
             }
@@ -54,7 +54,7 @@ public class MyCourseAdapter extends ArrayAdapter<Course> {
         convertView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(getContext(), "LONG", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(), "LONG", Toast.LENGTH_LONG).show();
                 (activity.findViewById(R.id.bottomBar)).setVisibility(View.VISIBLE);
 
                 return false;

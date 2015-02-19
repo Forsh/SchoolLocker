@@ -143,12 +143,12 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
             @Override
             public void onDrawerClosed(View drawerView) {
-                Toast.makeText(MainActivity.this, "Menu Closed", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Menu Closed", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onDrawerOpened(View drawerView) {
-                Toast.makeText(MainActivity.this, "Menu Opened", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Menu Opened", Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -179,7 +179,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(this, menu[position] + " was selected", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, menu[position] + " was selected", Toast.LENGTH_SHORT).show();
         selectItem(position);
         drawerLayout.closeDrawer(Gravity.START);
 

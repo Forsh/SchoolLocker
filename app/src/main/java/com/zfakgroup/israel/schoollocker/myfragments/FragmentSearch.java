@@ -55,7 +55,7 @@ public class FragmentSearch extends Fragment {
                 universities.toArray(universities1);
                 ((Spinner)view.findViewById(R.id.UniversityPicker)).setAdapter(new UniversityArrayAdapter(getActivity(), R.layout.simple_list_item_1, universities1));
                 for (University u : universities){
-                    Toast.makeText(getActivity(), u.toString(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), u.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         });

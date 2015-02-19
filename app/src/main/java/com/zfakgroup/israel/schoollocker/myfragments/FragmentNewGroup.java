@@ -57,7 +57,7 @@ public class FragmentNewGroup extends Fragment {
         }
         @Override
         public void callback(Object result) {
-            Toast.makeText(getActivity(), "Group created", Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), "Group created", Toast.LENGTH_LONG).show();
         }
 
     };

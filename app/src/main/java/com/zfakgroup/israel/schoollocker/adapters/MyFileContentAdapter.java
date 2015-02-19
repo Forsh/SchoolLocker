@@ -40,7 +40,7 @@ public class MyFileContentAdapter extends ArrayAdapter<Content> {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "FUUUUUU", Toast.LENGTH_LONG).show();
+               // Toast.makeText(getContext(), "FUUUUUU", Toast.LENGTH_LONG).show();
                 if (fragmentFiles != null){}
                    //
             }
@@ -48,8 +48,8 @@ public class MyFileContentAdapter extends ArrayAdapter<Content> {
         convertView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(getContext(), "LONG", Toast.LENGTH_LONG).show();
-                (activity.findViewById(R.id.bottomBar)).setVisibility(View.VISIBLE);
+                //Toast.makeText(getContext(), "LONG", Toast.LENGTH_LONG).show();
+                (activity.findViewById(R.id.bottomBarFile)).setVisibility(View.VISIBLE);
                 return false;
             }
         });

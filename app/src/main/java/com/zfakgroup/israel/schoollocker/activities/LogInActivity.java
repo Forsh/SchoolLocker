@@ -35,7 +35,7 @@ public class LogInActivity extends FragmentActivity {
         @Override
         public void callback(Object result) {
             if (result instanceof User) {
-                Toast.makeText(getApplicationContext(), "Logged in user № " + ((User) result).getId().toString(), Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "Logged in user № " + ((User) result).getId().toString(), Toast.LENGTH_LONG).show();
                 SessionId = ((User) result).getId();
                 setResult(SessionId);
                 finish();

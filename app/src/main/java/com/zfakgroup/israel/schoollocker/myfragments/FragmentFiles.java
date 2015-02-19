@@ -66,7 +66,7 @@ public class FragmentFiles extends Fragment {
                     });
                 }
             }).start();
-            Toast.makeText(getActivity(), filePath, Toast.LENGTH_LONG).show();
+            //Toast.makeText(getActivity(), filePath, Toast.LENGTH_LONG).show();
         }
     }
 
@@ -78,7 +78,7 @@ public class FragmentFiles extends Fragment {
             public boolean onMenuItemClick(MenuItem item) {
                 Intent intent = new Intent(getActivity(), FileChooserActivity.class);
                 startActivityForResult(intent, 10);
-                Toast.makeText(getActivity(), "Adding selected", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Adding selected", Toast.LENGTH_LONG).show();
                 return true;
             }
         };

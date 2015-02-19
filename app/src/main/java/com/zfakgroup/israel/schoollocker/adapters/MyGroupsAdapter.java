@@ -47,7 +47,7 @@ public class MyGroupsAdapter extends ArrayAdapter<Group> {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "FUUUUUU", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(), "FUUUUUU", Toast.LENGTH_LONG).show();
                 if (groupFragment != null)
                     groupFragment.showGroupContent(position);
             }
@@ -56,7 +56,7 @@ public class MyGroupsAdapter extends ArrayAdapter<Group> {
         convertView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(getContext(), "LONG", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getContext(), "LONG", Toast.LENGTH_LONG).show();
                 (activity.findViewById(R.id.bottomBar)).setVisibility(View.VISIBLE);
 
                 return false;
