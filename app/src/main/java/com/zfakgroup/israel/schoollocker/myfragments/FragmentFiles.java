@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ import com.zfakgroup.israel.schoollocker.activities.MainActivity;
 import com.zfakgroup.israel.schoollocker.adapters.MyCourseAdapter;
 import com.zfakgroup.israel.schoollocker.adapters.MyFileContentAdapter;
 import com.zfakgroup.israel.schoollocker.asynctasks.AsyncCallback;
+import com.zfakgroup.israel.schoollocker.asynctasks.DeleteCoursesAsync;
 import com.zfakgroup.israel.schoollocker.asynctasks.ListContentsAsync;
 import com.zfakgroup.israel.schoollocker.asynctasks.ListCourseAsync;
 
@@ -36,6 +38,8 @@ import ar.com.daidalos.afiledialog.FileChooserActivity;
  */
 public class FragmentFiles extends Fragment {
     int idCourse;
+    private Content[] contents;
+    ListView contentsListView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -133,4 +137,6 @@ public class FragmentFiles extends Fragment {
             }
         });
     }
+
+
 }

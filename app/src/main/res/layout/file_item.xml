@@ -35,7 +35,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/imageSearchResult"
-            android:src="@drawable/facebook"
+            android:src="@drawable/doc"
             android:layout_marginTop="4dp"
             android:adjustViewBounds="false" />
 
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Fall 2013"
+                android:text="Fall 2015"
                 android:id="@+id/textView3"
                 android:textSize="15sp"
                 android:layout_below="@+id/linearLayout2"

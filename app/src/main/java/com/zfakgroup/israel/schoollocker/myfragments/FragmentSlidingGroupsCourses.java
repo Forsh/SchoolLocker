@@ -61,6 +61,8 @@ public class FragmentSlidingGroupsCourses extends Fragment{
             public void onClick(View v) {
                 mainActivity.contentCourseFragment.deleteSelected();
                mainActivity.contentGroupFragment.deleteSelected();
+
+
             }
         });
 
