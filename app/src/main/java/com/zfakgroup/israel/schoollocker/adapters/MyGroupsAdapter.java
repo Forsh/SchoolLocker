@@ -36,7 +36,7 @@ public class MyGroupsAdapter extends ArrayAdapter<Group> {
     public View getView(final int position, View convertView, ViewGroup parent) {
         Group sr = getItem(position);
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.search_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.group_item, parent, false);
         }
 
 

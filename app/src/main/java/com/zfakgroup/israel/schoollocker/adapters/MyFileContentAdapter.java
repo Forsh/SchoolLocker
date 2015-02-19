@@ -49,7 +49,7 @@ public class MyFileContentAdapter extends ArrayAdapter<Content> {
             @Override
             public boolean onLongClick(View v) {
                 Toast.makeText(getContext(), "LONG", Toast.LENGTH_LONG).show();
-                //(activity.findViewById(R.id.bottomBarFile)).setVisibility(View.VISIBLE);
+                (activity.findViewById(R.id.bottomBar)).setVisibility(View.VISIBLE);
                 return false;
             }
         });

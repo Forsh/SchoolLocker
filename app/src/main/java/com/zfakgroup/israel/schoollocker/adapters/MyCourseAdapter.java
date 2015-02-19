@@ -35,7 +35,7 @@ public class MyCourseAdapter extends ArrayAdapter<Course> {
     public View getView(final int position, View convertView, ViewGroup parent) {
         Course sr = getItem(position);
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.search_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.course_item, parent, false);
         }
         ((TextView) convertView.findViewById(R.id.nameSearchResult)).setText(sr.getName());
         ((TextView) convertView.findViewById(R.id.descrSearchResult)).setText(sr.getDescription());
